@@ -114,9 +114,14 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
          int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
         if(ret == JOptionPane.YES_OPTION)
         {
+            if(ManHinhDangNhap.taikhoan.getQuyen() == "NT"){
             new DangNhapNhomTruong().setVisible(true);
             this.setVisible(false);
-        }
+            }else{
+                new DangNhapHocsinh().setVisible(true);
+            this.setVisible(false);
+            }}
+        
     }//GEN-LAST:event_jbtnthoatActionPerformed
 
     /**
