@@ -10,46 +10,46 @@ package Model;
  * @author quang
  */
 public class DanhGia {
-     private String Madanhgia;
-     private int Manhom;
-     private Double Diem;
+     private String maDanhGia;
+     private int maNhom;
+     private Double diem;
 
     public DanhGia() {
     }
 
     public DanhGia(String Madanhgia, int Manhom, Double Diem) {
-        this.Madanhgia = Madanhgia;
-        this.Manhom = Manhom;
-        this.Diem = Diem;
+        this.maDanhGia = Madanhgia;
+        this.maNhom = Manhom;
+        this.diem = Diem;
     }
 
     public String getMadanhgia() {
-        return Madanhgia;
+        return maDanhGia;
     }
 
     public void setMadanhgia(String Madanhgia) {
-        this.Madanhgia = Madanhgia;
+        this.maDanhGia = Madanhgia;
     }
 
     public int getManhom() {
-        return Manhom;
+        return maNhom;
     }
 
     public void setManhom(int Manhom) {
-        this.Manhom = Manhom;
+        this.maNhom = Manhom;
     }
 
     public Double getDiem() {
-        return Diem;
+        return diem;
     }
 
     public void setDiem(Double Diem) {
-        this.Diem = Diem;
+        this.diem = Diem;
     }
 
     @Override
     public String toString() {
-        return "Detai{" + "Madanhgia=" + Madanhgia + ", Manhom=" + Manhom + ", Diem=" + Diem + '}';
+        return "Detai{" + "Madanhgia=" + maDanhGia + ", Manhom=" + maNhom + ", Diem=" + diem + '}';
     }
      
 }
