@@ -117,7 +117,7 @@ public class XuatFileController {
 //    saveFile.setFileFilter(xlsxfilter);
 //    if(saveFile.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 //      File output = saveFile.getSelectedFile();
-      File a = new File("DanhGia" + tenLop + ".xlsx");
+      File a = new File("DanhGia" + tenLop + ".xls");
       try(FileOutputStream out = new FileOutputStream(a)) {
         workbook.write(out);
         out.close();
