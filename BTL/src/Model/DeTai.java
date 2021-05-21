@@ -17,6 +17,7 @@ public class DeTai {
     private String trangThai;
 
     public DeTai() {
+        this.trangThai = "";
     }
 
     
