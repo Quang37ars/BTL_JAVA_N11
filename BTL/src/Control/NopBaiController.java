@@ -1,6 +1,8 @@
 package Control;
 
+import Model.BaiTap;
 import View.NopBaiForm;
+import java.util.ArrayList;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JOptionPane;
 
@@ -8,6 +10,10 @@ public class NopBaiController {
   
   public static int i = 0;
   private final ConnectDB db= new ConnectDB();
+  
+  public void selectBaiTap(ArrayList<BaiTap> dsBT){
+    db.getDataBaiTap(dsBT);
+  }
   
   public void selectMaBT(String a) {
     db.getMaBaiTap(a);
@@ -17,6 +23,10 @@ public class NopBaiController {
     String a = "BT" + i;
     db.insertBaiTap(a, noiDung, linkBaiTap, maNhom);
     i++;
+  }
+  
+  public void deleteBaiTap(String maBaiTap) {
+    db.deleteBaiTap(maBaiTap);
   }
   
   public void init(NopBaiForm jFrameNopBai){

@@ -1,15 +1,15 @@
 package Control;
 
-import CustomTable.CustomTableThongBao;
 import Model.ThongBao;
 import View.XemThongBaoForm;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JTable;
 
 public class XemThongBaoController {
   
-  private final ConnectDB db= new ConnectDB();
+  private final ConnectDBQuan db= new ConnectDBQuan();
   
   public void init(XemThongBaoForm jFrameXemThongBao, ArrayList<ThongBao> list, JTable jTableThongBao) {
     jFrameXemThongBao.setResizable(false);
@@ -27,7 +27,7 @@ public class XemThongBaoController {
   
   public void loadTable(ArrayList<ThongBao> list, JTable jTableThongBao){
     selectDSThongBao(list);
-    jTableThongBao.setModel(new CustomTableThongBao(list));
+    jTableThongBao.setModel(new XemThongBaoCustomTable(list));
   }
   
   public void selectDSThongBao(ArrayList<ThongBao> dsThongBao) {

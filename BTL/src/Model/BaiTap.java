@@ -26,10 +26,6 @@ public class BaiTap {
         this.linkBaiTap = linkBaiTap;
         this.maNhom = maNhom;
     }
-
-    public BaiTap(String maBaiTap) {
-        this.maBaiTap = maBaiTap;
-    }
     
     
     public String getMaBaiTap() {
