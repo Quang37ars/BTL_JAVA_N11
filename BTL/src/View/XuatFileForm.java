@@ -5,12 +5,12 @@ import Model.DanhGia;
 import Model.Lop;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class XuatFileForm extends javax.swing.JFrame {
 
   XuatFileController xuatFileController = new XuatFileController();
-  XSSFWorkbook workbook = new XSSFWorkbook();
+  HSSFWorkbook workbook = new HSSFWorkbook();
   ArrayList<Lop> dsLop = new ArrayList<>();
   ArrayList<DanhGia> dsDanhGia = new ArrayList<>();
   
@@ -108,34 +108,6 @@ public class XuatFileForm extends javax.swing.JFrame {
           this.dispose();
         }
       }
-//      switch (jComboBoxDSLop.getSelectedIndex()) {
-//        case 0:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        case 1:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        case 2:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        case 3:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        case 4:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        case 5:
-//          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-//          this.dispose();
-//          break;
-//        default:
-//          break;
-//      }
     }
   }//GEN-LAST:event_jButtonXuatFileActionPerformed
 
