@@ -20,7 +20,7 @@ import Model.DangNhap;
  * @author quang
  */
 public class ManHinhDangNhap extends javax.swing.JFrame {
-
+    public static DangNhap taikhoan;
     Connection conn=null;
     PreparedStatement ps=null;
     ResultSet rs=null;
@@ -151,11 +151,13 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
                               return;
                           }
                           else if(dn.getQuyen().equals("NT")){
+                              taikhoan = dn;
                               this.setVisible(false);
                               new DangNhapNhomTruong().setVisible(true);
                               return;
                           }
                           else if(dn.getQuyen().equals("TV")){
+                              taikhoan = dn;
                               this.setVisible(false);
                               new DangNhapHocsinh().setVisible(true);
                               return;

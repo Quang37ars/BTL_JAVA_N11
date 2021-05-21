@@ -11,6 +11,7 @@ import Model.DanhGia;
 import Model.DeTai;
 import Model.Lop;
 import Model.SinhVien;
+import View.ManHinhDangNhap;
 import View.QuanLyLop;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -178,6 +179,7 @@ public class excuteSQL {
         db.getConnect();
         sql = "SELECT * FROM DANHGIA ";
         dsDanhGia = db.getDataDanhgia(sql);
+        
     }
 
     public void updateData(String mdg, Double diem) throws Exception {
@@ -242,6 +244,7 @@ public class excuteSQL {
         public int getmanhomt()
     {
         db.getConnect();
+        msv = ManHinhDangNhap.taikhoan.getUsername();
         String sql = "select MANHOM from SINHVIEN where MASV ='"+msv+"'";
         return db.getmanhom(sql);
     }
