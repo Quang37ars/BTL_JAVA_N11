@@ -102,10 +102,10 @@ public class XemThongBaoForm extends javax.swing.JFrame {
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
     if("NT".equals(ManHinhDangNhap.taikhoan.getQuyen())){
-        new DangNhapNhomTruong().setVisible(true);
+        new DangNhapNhomTruongForm().setVisible(true);
         this.setVisible(false);
     }else{
-        new DangNhapHocsinh().setVisible(true);
+        new DangNhapSinhVienForm().setVisible(true);
         this.setVisible(false);
     }
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed

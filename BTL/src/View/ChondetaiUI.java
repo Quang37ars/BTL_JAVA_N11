@@ -3,7 +3,7 @@ package View;
 
 
 
-import Control.excuteSQL;
+import Control.executeSQL;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,7 +31,7 @@ public class ChondetaiUI extends javax.swing.JFrame {
      */
     ArrayList<DeTai> listdt;
     int selectedRow = 0;
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     public ChondetaiUI() {
         initComponents();
         setLocationRelativeTo(null);
@@ -125,7 +125,7 @@ public class ChondetaiUI extends javax.swing.JFrame {
         int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
         if(ret == JOptionPane.YES_OPTION)
         {
-            new DangNhapNhomTruong().setVisible(true);
+            new DangNhapNhomTruongForm().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jbtnthoatActionPerformed

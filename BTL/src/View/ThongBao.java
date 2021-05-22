@@ -1,7 +1,7 @@
 package View;
 
 
-import Control.excuteSQL;
+import Control.executeSQL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,7 +21,7 @@ public class ThongBao extends javax.swing.JFrame {
     /**
      * Creates new form ThongBaoUI
      */
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     public ThongBao() {
         initComponents();
         setLocationRelativeTo(null);
@@ -45,6 +45,7 @@ public class ThongBao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Nhập thông báo: ");
 
@@ -130,7 +131,7 @@ public class ThongBao extends javax.swing.JFrame {
            int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
         if(ret == JOptionPane.YES_OPTION)
         {
-            new DangNhapGiaoVien().setVisible(true);
+            new DangNhapGiaoVienForm().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed

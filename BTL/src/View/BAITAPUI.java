@@ -5,7 +5,7 @@
  */
 package View;
 
-import Control.excuteSQL;
+import Control.executeSQL;
 import java.util.ArrayList;
 import Model.BaiTap;
 import CustomTable.CustomTableBaiTap;
@@ -23,7 +23,7 @@ public class BAITAPUI extends javax.swing.JFrame {
      * Creates new form BAITAP
      */
     ArrayList<BaiTap> listbt = new ArrayList<BaiTap>();
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     public BAITAPUI() throws SQLException {
         initComponents();
         setLocationRelativeTo(null);
@@ -126,7 +126,7 @@ public class BAITAPUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new DangNhapGiaoVien().setVisible(true);
+        new DangNhapGiaoVienForm().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

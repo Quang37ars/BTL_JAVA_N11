@@ -24,7 +24,7 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
     Connection conn=null;
     PreparedStatement ps=null;
     ResultSet rs=null;
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     
     public ManHinhDangNhap() {
         initComponents();
@@ -148,19 +148,19 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
                           System.out.println("shjdgj");
                           if(dn.getQuyen().equals("GV")){
                               this.setVisible(false);
-                              new DangNhapGiaoVien().setVisible(true);
+                              new DangNhapGiaoVienForm().setVisible(true);
                               return;
                           }
                           else if(dn.getQuyen().equals("NT")){
                               taikhoan = dn;
                               this.setVisible(false);
-                              new DangNhapNhomTruong().setVisible(true);
+                              new DangNhapNhomTruongForm().setVisible(true);
                               return;
                           }
                           else if(dn.getQuyen().equals("TV")){
                               taikhoan = dn;
                               this.setVisible(false);
-                              new DangNhapHocsinh().setVisible(true);
+                              new DangNhapSinhVienForm().setVisible(true);
                               return;
                           }
                       }

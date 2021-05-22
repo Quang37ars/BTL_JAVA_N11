@@ -147,7 +147,7 @@ public class NopBaiForm extends javax.swing.JFrame {
   }//GEN-LAST:event_jButtonGuiBaiActionPerformed
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
-    new DangNhapNhomTruong().setVisible(true);
+    new DangNhapNhomTruongForm().setVisible(true);
     this.setVisible(false);
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 

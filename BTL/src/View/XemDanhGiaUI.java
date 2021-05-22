@@ -2,7 +2,7 @@ package View;
 
 
 
-import Control.excuteSQL;
+import Control.executeSQL;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import CustomTable.CustomTableDG;
@@ -24,7 +24,7 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
      * Creates new form XemDanhGiaUI
      */
     ArrayList<DanhGia> listdg = new ArrayList<DanhGia>();
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     public XemDanhGiaUI() {
         initComponents();
         setLocationRelativeTo(null);
@@ -52,6 +52,7 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
         jTableDanhgia = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Xem Đánh Giá");
@@ -115,10 +116,10 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
         if(ret == JOptionPane.YES_OPTION)
         {
             if(ManHinhDangNhap.taikhoan.getQuyen() == "NT"){
-            new DangNhapNhomTruong().setVisible(true);
+            new DangNhapNhomTruongForm().setVisible(true);
             this.setVisible(false);
             }else{
-                new DangNhapHocsinh().setVisible(true);
+                new DangNhapSinhVienForm().setVisible(true);
             this.setVisible(false);
             }}
         

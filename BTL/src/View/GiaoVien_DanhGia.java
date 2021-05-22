@@ -5,8 +5,8 @@
  */
 package View;
 
-import View.Chodiem;
-import View.DangNhapGiaoVien;
+import View.ChodiemForm;
+import View.DangNhapGiaoVienForm;
 import Control.*;
 import Model.*;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class GiaoVien_DanhGia extends javax.swing.JFrame {
      * Creates new form HinhDungManHinhDangNhapGiaoVien_DanhGia
      */
     
-    excuteSQL ex = new excuteSQL();
+    executeSQL ex = new executeSQL();
     public static String tl;
     ArrayList<Lop> dslop ;
     ArrayList<Integer> list;
@@ -131,7 +131,7 @@ public class GiaoVien_DanhGia extends javax.swing.JFrame {
                 }
             }
         }
-        new Chodiem().setVisible(true);
+        new ChodiemForm().setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_btnDanhgiaActionPerformed
@@ -141,7 +141,7 @@ public class GiaoVien_DanhGia extends javax.swing.JFrame {
         ex.selectDSLop();
 
         this.setVisible(false);
-        new DangNhapGiaoVien().setVisible(true);
+        new DangNhapGiaoVienForm().setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**
