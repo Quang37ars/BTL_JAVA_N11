@@ -28,6 +28,7 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
     
     public ManHinhDangNhap() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

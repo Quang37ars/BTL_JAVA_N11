@@ -18,6 +18,7 @@ public class DangNhapGiaoVien extends javax.swing.JFrame {
      */
     public DangNhapGiaoVien() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

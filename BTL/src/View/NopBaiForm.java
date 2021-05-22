@@ -141,12 +141,13 @@ public class NopBaiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void jButtonGuiBaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuiBaiActionPerformed
-    nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), 1);
+    String maSV = ManHinhDangNhap.taikhoan.getUsername();
+    nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
   }//GEN-LAST:event_jButtonGuiBaiActionPerformed
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
-    this.dispose();
     new DangNhapNhomTruong().setVisible(true);
+    this.setVisible(false);
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 
   /**

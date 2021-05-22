@@ -28,6 +28,10 @@ public class SinhVien {
         this.nhomTruong = nhomTruong;
     }
 
+    public SinhVien(String maSV) {
+        this.maSV = maSV;
+    }
+
 
     @Override
     public int hashCode() {

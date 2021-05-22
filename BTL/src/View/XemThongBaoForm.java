@@ -103,7 +103,13 @@ public class XemThongBaoForm extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
-    this.dispose();
+    if("NT".equals(ManHinhDangNhap.taikhoan.getQuyen())){
+        new DangNhapNhomTruong().setVisible(true);
+        this.setVisible(false);
+    }else{
+        new DangNhapHocsinh().setVisible(true);
+        this.setVisible(false);
+    }
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 
   public static void main(String args[]) {

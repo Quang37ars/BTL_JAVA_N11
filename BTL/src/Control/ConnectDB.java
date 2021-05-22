@@ -346,5 +346,20 @@ public class ConnectDB {
         } catch (Exception ex) {           
             JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang \n"+ex);
         }
-  }
+    }
+    public void getmaNhom(SinhVien sv){
+        String selectSQL = "SELECT MANHOM FROM SINHVIEN WHERE MASV = ?";
+        try {
+            getConnect();
+            PreparedStatement preSta = cnn.prepareStatement(selectSQL);
+            preSta.setString(1, sv.getMaSV());
+            rs = preSta.executeQuery();
+            while(rs.next()){
+              sv.setMaNhom(rs.getInt(1));
+            }
+            closeConnect();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang \n"+ex);
+        }
+    }
 }

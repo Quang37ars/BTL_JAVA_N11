@@ -95,7 +95,8 @@ public class XuatFileForm extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
-    this.dispose();
+    new DangNhapGiaoVien().setVisible(true);
+    this.setVisible(false);
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 
   private void jButtonXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatFileActionPerformed
