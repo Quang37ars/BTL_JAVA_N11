@@ -182,8 +182,17 @@ public class executeSQL {
         dsDanhGia = db.getDataDanhgia(sql);
 
     }
-
-    public void updateData(String mdg, Double diem) throws Exception {
+    
+    public static int ma=0;
+    public final String matb="DG";
+    public void insertDSDanhgia(int maLop,Double diem) throws Exception{
+        db.getConnect();
+        ma++;
+        String mdg=matb+ma;
+        sql="insert into DANHGIA values('"+mdg+"',"+maLop+","+diem+")";
+        db.doSQL(sql);
+    }
+    public void suaDSDanhgia(String mdg, Double diem) throws Exception {
         db.getConnect();
         sql = "update DANHGIA set DIEM=" + diem + " "
                 + "WHERE MADANHGIA='" + mdg + "'";

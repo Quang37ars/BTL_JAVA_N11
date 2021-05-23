@@ -23,21 +23,19 @@ public class ChodiemForm extends javax.swing.JFrame {
     ArrayList<Integer> listmanhom;
     executeSQL ex = new executeSQL();
     ArrayList<Lop> dsLop = new ArrayList<>();
-    ArrayList<DanhGia> dsDetai = new ArrayList<>();
     GiaoVien_DanhGia gvdg = new GiaoVien_DanhGia();
 
     public ChodiemForm() {
         initComponents();
-        TableChodiem.setModel(new CustomTableChoDiem(GiaoVien_DanhGia.listdg));
-
+        LoadTable();
     }
 
     public void LoadTable() {
         ex.selectDSDanhgia();
         listmanhom = ex.getMaNhom(GiaoVien_DanhGia.tl);
-        dsDetai = ex.getDsDanhGia();
+        dsDanhgia = ex.getDsDanhGia();
         for (int i : listmanhom) {
-            for (DanhGia j : dsDetai) {
+            for (DanhGia j : dsDanhgia) {
                 if (i == j.getManhom()) {
                     dsupdate.add(j);
                 }
@@ -58,7 +56,7 @@ public class ChodiemForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableChodiem = new javax.swing.JTable();
-        btnsave = new javax.swing.JButton();
+        btnsua = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,6 +67,8 @@ public class ChodiemForm extends javax.swing.JFrame {
         btnThem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(710, 500));
+        setResizable(false);
 
         jLabel1.setText("Cho Điểm");
 
@@ -90,10 +90,10 @@ public class ChodiemForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TableChodiem);
 
-        btnsave.setText("Save");
-        btnsave.addActionListener(new java.awt.event.ActionListener() {
+        btnsua.setText("Sửa");
+        btnsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsaveActionPerformed(evt);
+                btnsuaActionPerformed(evt);
             }
         });
 
@@ -156,9 +156,9 @@ public class ChodiemForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThem)
-                .addGap(47, 47, 47)
-                .addComponent(btnsave)
-                .addGap(76, 76, 76)
+                .addGap(58, 58, 58)
+                .addComponent(btnsua)
+                .addGap(65, 65, 65)
                 .addComponent(btnHuy)
                 .addGap(126, 126, 126))
         );
@@ -183,7 +183,7 @@ public class ChodiemForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnsave)
+                    .addComponent(btnsua)
                     .addComponent(btnHuy)
                     .addComponent(btnThem)))
         );
@@ -191,16 +191,18 @@ public class ChodiemForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
-        try {
-            // TODO add your handling code here:
-            //ex.updateData(dsDetai.get(TableChodiem.getSelectedRow()).getMadanhgia(),Double.valueOf(txtDiem.getText()));
-
+    private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
+        
+          
+          try {
+            ex.suaDSDanhgia(txtMadanhgia.getText(),Double.valueOf(txtDiem.getText()));
         } catch (Exception ex) {
             Logger.getLogger(ChodiemForm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_btnsaveActionPerformed
+        
+
+    }//GEN-LAST:event_btnsuaActionPerformed
 
     private void txtDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiemActionPerformed
         // TODO add your handling code here:
@@ -214,6 +216,7 @@ public class ChodiemForm extends javax.swing.JFrame {
 
     private void TableChodiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableChodiemMouseClicked
         // TODO add your handling code here:
+        int selectedRow = TableChodiem.getSelectedRow();
         ex.selectDSDanhgia();
         listmanhom = ex.getMaNhom(GiaoVien_DanhGia.tl);
         dsDanhgia = ex.getDsDanhGia();
@@ -224,14 +227,22 @@ public class ChodiemForm extends javax.swing.JFrame {
                 }
             }
         }
-        TableChodiem.setModel(new CustomTableChoDiem(dsupdate));
+        DanhGia detai = dsupdate.get(selectedRow);
+        txtMadanhgia.setText(detai.getMadanhgia());
+        txtManhom.setText(String.valueOf(detai.getManhom()));
+        txtDiem.setText(String.valueOf(detai.getDiem()));
 
 
     }//GEN-LAST:event_TableChodiemMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            ex.insertDSDanhgia(Integer.valueOf(txtManhom.getText()), Double.valueOf(txtDiem.getText()));
+
+        } catch (Exception ex) {
+            Logger.getLogger(ChodiemForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     /**
@@ -280,7 +291,7 @@ public class ChodiemForm extends javax.swing.JFrame {
     private javax.swing.JTable TableChodiem;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnsave;
+    private javax.swing.JButton btnsua;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
