@@ -9,7 +9,6 @@ import java.util.logging.Logger;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author phamt
@@ -118,7 +117,7 @@ public class CongViecForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new ThongBao().setVisible(true);
+        new ThongBaoGVForm().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -135,7 +134,7 @@ public class CongViecForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CongViecForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-            this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

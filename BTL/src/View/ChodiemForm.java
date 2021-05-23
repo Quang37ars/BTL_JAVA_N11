@@ -13,30 +13,32 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.TableModel;
 
-
 /**
  *
  * @author quang
  */
 public class ChodiemForm extends javax.swing.JFrame {
-    ArrayList<DanhGia> dsupdate =  new ArrayList<>() ;
+
+    ArrayList<DanhGia> dsupdate = new ArrayList<>();
     ArrayList<Integer> listmanhom;
     executeSQL ex = new executeSQL();
     ArrayList<Lop> dsLop = new ArrayList<>();
-    ArrayList<DanhGia> dsDetai =  new ArrayList<>() ;
+    ArrayList<DanhGia> dsDetai = new ArrayList<>();
     GiaoVien_DanhGia gvdg = new GiaoVien_DanhGia();
+
     public ChodiemForm() {
         initComponents();
-        TableChodiem.setModel( new CustomTableChoDiem(GiaoVien_DanhGia.listdg));
-        
+        TableChodiem.setModel(new CustomTableChoDiem(GiaoVien_DanhGia.listdg));
+
     }
-    public void LoadTable(){
+
+    public void LoadTable() {
         ex.selectDSDanhgia();
         listmanhom = ex.getMaNhom(GiaoVien_DanhGia.tl);
         dsDetai = ex.getDsDanhGia();
-        for(int i: listmanhom){
-            for(DanhGia j: dsDetai){
-                if(i == j.getManhom()){
+        for (int i : listmanhom) {
+            for (DanhGia j : dsDetai) {
+                if (i == j.getManhom()) {
                     dsupdate.add(j);
                 }
             }
@@ -181,12 +183,11 @@ public class ChodiemForm extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             //ex.updateData(dsDetai.get(TableChodiem.getSelectedRow()).getMadanhgia(),Double.valueOf(txtDiem.getText()));
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(ChodiemForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void txtDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiemActionPerformed
@@ -206,8 +207,8 @@ public class ChodiemForm extends javax.swing.JFrame {
         txtMadanhgia.setText(detai.getMadanhgia());
         txtManhom.setText(String.valueOf(detai.getManhom()));
         txtDiem.setText(String.valueOf(detai.getDiem()));
-        
-        
+
+
     }//GEN-LAST:event_TableChodiemMouseClicked
 
     /**

@@ -6,21 +6,20 @@ package Model;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ledan
  */
 public class DeTai {
+
     private String maDeTai;
     private String tenDeTai;
     private String trangThai;
 
     public DeTai() {
-        this.trangThai = "";
+        this.trangThai = "false";
     }
 
-    
     public DeTai(String madetai, String tendetai, String trangthai) {
         this.maDeTai = madetai;
         this.tenDeTai = tendetai;
@@ -51,12 +50,9 @@ public class DeTai {
         this.trangThai = trangThai;
     }
 
-    
-
     @Override
     public String toString() {
         return "Detai{" + "madetai=" + maDeTai + ", tendetai=" + tenDeTai + ", trangthai=" + trangThai + '}';
     }
-    
-    
+
 }

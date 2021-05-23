@@ -10,6 +10,7 @@ package Model;
  * @author ledan
  */
 public class ThongBao {
+
     private String maThongBao;
     private String noiDung;
     private String flieDinhKem;
@@ -46,5 +47,5 @@ public class ThongBao {
     public void setFlieDinhKem(String flieDinhKem) {
         this.flieDinhKem = flieDinhKem;
     }
-    
+
 }

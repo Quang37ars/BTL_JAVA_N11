@@ -37,6 +37,7 @@ public class executeSQL {
     final String stt = "GVTB";
     private ArrayList<BaiTap> dsbt = new ArrayList<BaiTap>();
     String msv;
+
     public executeSQL() {
 
     }
@@ -53,7 +54,8 @@ public class executeSQL {
         db.doSQL(sql);
         sql = "SELECT MALOP FROM LOPHOC WHERE TENLOP = '" + QuanLyLopForm.tl + "'";
         String ml = db.getmalop(sql);
-        System.out.println(ml);
+        sql = "UPDATE FROM NHOM SET MALOP = '" + ml + "' WHERE MANHOM = "+ sv.getMaNhom() + "";
+        db.doSQL(sql);
         sql = "UPDATE LOPHOC SET SISO = SISO + 1 WHERE MALOP = '" + ml + "'";
         db.doSQL(sql);
     }
@@ -118,8 +120,9 @@ public class executeSQL {
 
     public ArrayList<SinhVien> getSvLopChoose(String tl) throws SQLException {
         db.getConnect();
-
-        sql = "SELECT * FROM SINHVIEN,NHOM,LOPHOC WHERE TENLOP= '" + tl + "'";
+        String sql = "SELECT MALOP FROM LOPHOC WHERE TENLOP ='"+tl+"'";
+        String ml = db.getMaLopChoose(sql);
+        sql = "SELECT * FROM SINHVIEN INNER JOIN NHOM ON SINHVIEN.MANHOM = NHOM.MANHOM WHERE MALOP= '" + ml + "'";
         return db.getDataSV(sql);
     }
 
@@ -179,7 +182,7 @@ public class executeSQL {
         db.getConnect();
         sql = "SELECT * FROM DANHGIA ";
         dsDanhGia = db.getDataDanhgia(sql);
-        
+
     }
 
     public void updateData(String mdg, Double diem) throws Exception {
@@ -194,46 +197,48 @@ public class executeSQL {
         String sql = "Select MANHOM FROM LOPHOC inner join NHOM on LOPHOC.MALOP = Nhom.MALOP WHERE TENLOP = '" + tenLop + "'";
         return db.getMaNhomQ1(sql);
     }
+
     //Quang 36
-        public void getDetai()
-    {
+    public void getDetai() {
         db.getConnect();
-        String sql = "select * from DETAI where TRANGTHAICHON = "+false+"";
+        String sql = "select * from DETAI where TRANGTHAICHON = " + false + "";
         dsdt = db.getdsDeTaiQ2(sql);
     }
-            public void setTrangthaidt(String u) throws Exception
-    {
+
+    public void setTrangthaidt(String u) throws Exception {
         db.getConnect();
-        String sql = "update DETAi set TRANGTHAICHON = '"+true+"'" + " where MADETAI ='"+u+"'";
+        String sql = "update DETAi set TRANGTHAICHON = '" + true + "'" + " where MADETAI ='" + u + "'";
         db.doSQL(sql);
     }
-                public void setmaDeTai(String mdt) throws Exception
-    {
+
+    public void setmaDeTai(String mdt) throws Exception {
         db.getConnect();
-        String sql = "update NHOM set MADETAI = '"+mdt+"' where MANHOM = "+getmanhomt()+" ";
+        String sql = "update NHOM set MADETAI = '" + mdt + "' where MANHOM = " + getmanhomt() + " ";
         db.doSQL(sql);
     }
-                    public void guiThongBao(String tb ,String filedk) throws Exception
-    {
+
+    public void guiThongBao(String tb, String filedk) throws Exception {
         maTB++;
         String matt = STT + maTB;
         db.getConnect();
-        String sql = "Insert into THONGBAO values('"+matt+"','"+ tb+"','"+filedk+"')";
+        String sql = "Insert into THONGBAO values('" + matt + "','" + tb + "','" + filedk + "')";
         db.doSQL(sql);
     }
-                        public ArrayList<DeTai> getDsdt() {
+
+    public ArrayList<DeTai> getDsdt() {
         return dsdt;
     }
 
     public void setDsdt(ArrayList<DeTai> dsdt) {
         this.dsdt = dsdt;
     }
-        public void getDanhGia()
-    {
+
+    public void getDanhGia() {
         db.getConnect();
-        String sql = "select * from DANHGIA where MANHOM = "+getmanhomt()+"";
+        String sql = "select * from DANHGIA where MANHOM = " + getmanhomt() + "";
         dsdg = db.getDataDG(sql);
     }
+
     public ArrayList<DanhGia> getDsdg() {
         return dsdg;
     }
@@ -241,36 +246,41 @@ public class executeSQL {
     public void setDsdg(ArrayList<DanhGia> dsdg) {
         this.dsdg = dsdg;
     }
-        public int getmanhomt()
-    {
+
+    public int getmanhomt() {
         db.getConnect();
         msv = ManHinhDangNhap.taikhoan.getUsername();
-        String sql = "select MANHOM from SINHVIEN where MASV ='"+msv+"'";
+        String sql = "select MANHOM from SINHVIEN where MASV ='" + msv + "'";
         return db.getmanhom(sql);
     }
-        // Quý
-    public void insertdataDeTai(DeTai k) throws Exception{
+    // Quý
+
+    public void insertdataDeTai(DeTai k) throws Exception {
         db.getConnect();
-        String sql = "Insert into DETAI values('"+k.getMaDeTai()+"','"+k.getTenDeTai()+"'," + k.getTrangThai()+")";
+        String sql = "Insert into DETAI values('" + k.getMaDeTai() + "','" + k.getTenDeTai() + "','" + k.getTrangThai() + "')";
         db.doSQL(sql);
     }
-        public void getBaiTap() throws SQLException{
+
+    public void getBaiTap() throws SQLException {
         db.getConnect();
         String sql = "select * from BAITAP";
         dsbt = db.getDataBT(sql);
     }
-            public ArrayList<BaiTap> getDsbt(){
+
+    public ArrayList<BaiTap> getDsbt() {
         return dsbt;
     }
-    public void setDsbt(ArrayList<BaiTap> dsbt){
+
+    public void setDsbt(ArrayList<BaiTap> dsbt) {
         this.dsbt = dsbt;
     }
-        public void guiThongBaoGV(String nd, String filedk) throws Exception{
+
+    public void guiThongBaoGV(String nd, String filedk) throws Exception {
         maGV++;
         String matt = stt + maGV;
-        
+
         db.getConnect();
-        String sql = "Insert into THONGBAO values('"+matt+"','"+nd+"','"+filedk+"')";
+        String sql = "Insert into THONGBAO values('" + matt + "','" + nd + "','" + filedk + "')";
         db.doSQL(sql);
     }
 }

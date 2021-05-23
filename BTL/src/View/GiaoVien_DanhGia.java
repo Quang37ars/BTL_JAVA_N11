@@ -22,22 +22,21 @@ public class GiaoVien_DanhGia extends javax.swing.JFrame {
     /**
      * Creates new form HinhDungManHinhDangNhapGiaoVien_DanhGia
      */
-    
     executeSQL ex = new executeSQL();
     public static String tl;
-    ArrayList<Lop> dslop ;
+    ArrayList<Lop> dslop;
     ArrayList<Integer> list;
-    public static ArrayList<DanhGia> listdg= new ArrayList<DanhGia>();
-    
+    public static ArrayList<DanhGia> listdg = new ArrayList<DanhGia>();
+
     public GiaoVien_DanhGia() {
         initComponents();
         init();
     }
 
     public void init() {
-        
-        dslop=ex.selectDSLop();
-        for(Lop s: dslop){
+
+        dslop = ex.selectDSLop();
+        for (Lop s : dslop) {
             cbbLop.addItem(s.getTenLop());
         }
     }
@@ -124,9 +123,9 @@ public class GiaoVien_DanhGia extends javax.swing.JFrame {
         list = ex.getMaNhom(tl);
         ex.selectDSDanhgia();
         ArrayList<DanhGia> dsdg = ex.getDsDanhGia();
-        for(int i: list){
-            for(DanhGia j: dsdg){
-                if(i == j.getManhom()){
+        for (int i : list) {
+            for (DanhGia j : dsdg) {
+                if (i == j.getManhom()) {
                     listdg.add(j);
                 }
             }

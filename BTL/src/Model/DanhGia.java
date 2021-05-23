@@ -10,9 +10,10 @@ package Model;
  * @author quang
  */
 public class DanhGia {
-     private String maDanhGia;
-     private int maNhom;
-     private Double diem;
+
+    private String maDanhGia;
+    private int maNhom;
+    private Double diem;
 
     public DanhGia() {
     }
@@ -51,5 +52,5 @@ public class DanhGia {
     public String toString() {
         return "Detai{" + "Madanhgia=" + maDanhGia + ", Manhom=" + maNhom + ", Diem=" + diem + '}';
     }
-     
+
 }

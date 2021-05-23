@@ -28,13 +28,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author 2XHQ
  */
 public class QuanLyLopForm extends javax.swing.JFrame {
+
     private String filename;
     private TaoLopController taolop = new TaoLopController();
     private executeSQL exsql = new executeSQL();
     public static SinhVien SvSua = new SinhVien();
     public static String tl;
     private ArrayList<SinhVien> dssv;
-    private ArrayList<Lop> dslop ;
+    private ArrayList<Lop> dslop;
+
     /**
      * Creates new form QuanLyLop
      */
@@ -44,10 +46,10 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         PanelTable.setVisible(false);
         dslop = exsql.selectDSLop();
         tableLop.setModel(new CustomTableLop(dslop));
-        for(Lop i:dslop){
+        for (Lop i : dslop) {
             cbbLop.addItem(i.getTenLop().toString());
         }
-        
+
     }
 
     /**
@@ -408,23 +410,23 @@ public class QuanLyLopForm extends javax.swing.JFrame {
 
     private void btnOpenfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenfileActionPerformed
 
-        FileNameExtensionFilter ExcelFiller = new FileNameExtensionFilter("Excel", "xls","xlsx");
+        FileNameExtensionFilter ExcelFiller = new FileNameExtensionFilter("Excel", "xls", "xlsx");
         filechooser.setFileFilter(ExcelFiller);
         filechooser.setMultiSelectionEnabled(false);
-        int x = filechooser.showDialog(this,"Chon file");
-        if(x == JFileChooser.APPROVE_OPTION){
-            txtfilename.setText( filechooser.getSelectedFile().getAbsolutePath());
+        int x = filechooser.showDialog(this, "Chon file");
+        if (x == JFileChooser.APPROVE_OPTION) {
+            txtfilename.setText(filechooser.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_btnOpenfileActionPerformed
 
     private void btnSapXepTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepTenActionPerformed
         // TODO add your handling code here:
-        Collections.sort(dssv, new Comparator<SinhVien>(){
+        Collections.sort(dssv, new Comparator<SinhVien>() {
             @Override
             public int compare(SinhVien t, SinhVien t1) {
-                 return t.getTenSV().compareToIgnoreCase(t1.getTenSV());
+                return t.getTenSV().compareToIgnoreCase(t1.getTenSV());
             }
-            
+
         }
         );
         tableSinhVien.setModel(new CustomTableSinhVien((dssv)));
@@ -449,27 +451,29 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         txtfilename.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    public void LoadBangLop(){
+    public void LoadBangLop() {
         exsql.selectDSLop();
         tableLop.setModel(new CustomTableLop(exsql.getDslop()));
-        for(Lop i:exsql.getDslop()){
+        for (Lop i : exsql.getDslop()) {
             cbbLop.addItem(i.getTenLop().toString());
         }
-        
-}
-    
+
+    }
+
     private void btnTaoLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoLopActionPerformed
         // TODO add your handling code here:
         filename = txtfilename.getText();
         try {
             taolop.DocDL(filename);
-            if(cbbNhom.getSelectedItem() == "Ramdom")
+            if (cbbNhom.getSelectedItem() == "Ramdom") {
                 taolop.TaoNhomRanDom();
-            else taolop.TaoNhomThuong();
-            JOptionPane.showMessageDialog(null,"Tạo lớp thành công \n");
+            } else {
+                taolop.TaoNhomThuong();
+            }
+            JOptionPane.showMessageDialog(null, "Tạo lớp thành công \n");
         } catch (IOException ex) {
             Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"Tạo lớp Thất bại \n");
+            JOptionPane.showMessageDialog(null, "Tạo lớp Thất bại \n");
         } catch (Exception ex) {
             Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -491,20 +495,20 @@ public class QuanLyLopForm extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if(tableSinhVien.getSelectedRow() >= 0){
+        if (tableSinhVien.getSelectedRow() >= 0) {
             new SuaSinhVienForm().setVisible(true);
             this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null,"Chọn sinh viên muốn sửa thông tin trong bảng.\n");
+        } else {
+            JOptionPane.showMessageDialog(null, "Chọn sinh viên muốn sửa thông tin trong bảng.\n");
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnSapXepSTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepSTTActionPerformed
         // TODO add your handling code here:
-        Collections.sort(dssv, new Comparator<SinhVien>(){
+        Collections.sort(dssv, new Comparator<SinhVien>() {
             @Override
             public int compare(SinhVien t, SinhVien t1) {
-                 return Integer.compare(t.getMaNhom(), t1.getMaNhom());
+                return Integer.compare(t.getMaNhom(), t1.getMaNhom());
             }
         }
         );
@@ -513,29 +517,29 @@ public class QuanLyLopForm extends javax.swing.JFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        if(tableSinhVien.getSelectedRow() >= 0){
+        if (tableSinhVien.getSelectedRow() >= 0) {
             SinhVien e = dssv.get(tableSinhVien.getSelectedRow());
-            int k = JOptionPane.showConfirmDialog(null,"Bạn có thực sự muốn xóa sinh viên này không !!!","Thông báo",JOptionPane.YES_NO_OPTION);
-            if(k == JOptionPane.YES_OPTION){
-            try {
-                exsql.deleteSV(e.getMaSV());
-            } catch (Exception ex) {
-                Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+            int k = JOptionPane.showConfirmDialog(null, "Bạn có thực sự muốn xóa sinh viên này không !!!", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION) {
+                try {
+                    exsql.deleteSV(e.getMaSV());
+                } catch (Exception ex) {
+                    Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                dssv.remove(tableSinhVien.getSelectedRow());
+                tableSinhVien.setModel(new CustomTableSinhVien(dssv));
+                dslop = exsql.selectDSLop();
+                tableLop.setModel(new CustomTableLop(dslop));
+                JOptionPane.showMessageDialog(null, "Xóa sinh viên thành công \n");
+            } else {
+                JOptionPane.showMessageDialog(null, "Chọn sinh viên muốn xóa \n");
             }
-            dssv.remove(tableSinhVien.getSelectedRow());
-            tableSinhVien.setModel(new CustomTableSinhVien(dssv));
-            dslop = exsql.selectDSLop();
-            tableLop.setModel(new CustomTableLop(dslop));
-            JOptionPane.showMessageDialog(null,"Xóa sinh viên thành công \n");
-        }else{
-            JOptionPane.showMessageDialog(null,"Chọn sinh viên muốn xóa \n");
-        }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnXoaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaLopActionPerformed
         // TODO add your handling code here:
-        if(tableLop.getSelectedRow() >=0){
+        if (tableLop.getSelectedRow() >= 0) {
             Lop l = dslop.get(tableLop.getSelectedRow());
             try {
                 exsql.deleteLop(l.getMaLop());
@@ -544,9 +548,8 @@ public class QuanLyLopForm extends javax.swing.JFrame {
             }
             dslop.remove(tableLop.getSelectedRow());
             tableLop.setModel(new CustomTableLop(dslop));
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Bạn phải chọn lớp cần xóa trong bảng \n");
+        } else {
+            JOptionPane.showMessageDialog(null, "Bạn phải chọn lớp cần xóa trong bảng \n");
         }
     }//GEN-LAST:event_btnXoaLopActionPerformed
 
@@ -556,6 +559,7 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
     JFileChooser filechooser = new JFileChooser();
+
     /**
      * @param args the command line arguments
      */

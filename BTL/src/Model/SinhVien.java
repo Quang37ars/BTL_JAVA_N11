@@ -12,15 +12,15 @@ import java.util.Objects;
  * @author 2XHQ
  */
 public class SinhVien {
-    
+
     private int maNhom;
     private String maSV;
     private String hoSV;
     private String tenSV;
     private boolean nhomTruong;
 
-    public SinhVien( String maSV,int maNhom, String hoSV, String tenSV, boolean nhomTruong) {
-        
+    public SinhVien(String maSV, int maNhom, String hoSV, String tenSV, boolean nhomTruong) {
+
         this.maNhom = maNhom;
         this.maSV = maSV;
         this.hoSV = hoSV;
@@ -32,11 +32,10 @@ public class SinhVien {
         this.maSV = maSV;
     }
 
-
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + Objects.hashCode(this.maSV);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.maSV);
         return hash;
     }
 
@@ -59,11 +58,11 @@ public class SinhVien {
     }
 
 
+
     public SinhVien() {
         nhomTruong = false;
         maNhom = -1;
     }
-
 
     public int getMaNhom() {
         return maNhom;
@@ -110,7 +109,4 @@ public class SinhVien {
         return "SinhVien{" + "maNhom=" + maNhom + ", maSV=" + maSV + ", hoSV=" + hoSV + ", tenSV=" + tenSV + ", nhomTruong=" + nhomTruong + '}';
     }
 
-    
-    
-    
 }

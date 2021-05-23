@@ -1,6 +1,5 @@
 package View;
 
-
 //import control.ExecuteSQL;
 //import control.Uploaddetai;
 //import java.io.IOException;
@@ -30,16 +29,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author phamt
  */
 public class GuiDeTaiForm extends javax.swing.JFrame {
+
     JFileChooser filechooser = new JFileChooser();
     String filename;
     UploaddetaiController dt = new UploaddetaiController();
     executeSQL ex = new executeSQL();
+
     public GuiDeTaiForm() {
         initComponents();
         setLocationRelativeTo(null);
@@ -139,14 +139,14 @@ public class GuiDeTaiForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FileNameExtensionFilter ExcelFiller = new FileNameExtensionFilter("Excel","xls","xlsx");
+        FileNameExtensionFilter ExcelFiller = new FileNameExtensionFilter("Excel", "xls", "xlsx");
         filechooser.setFileFilter(ExcelFiller);
         filechooser.setMultiSelectionEnabled(false);
-        int x = filechooser.showDialog(this,"Chon file");
-        if(x == JFileChooser.APPROVE_OPTION){
-            txtfilename.setText( filechooser.getSelectedFile().getAbsolutePath());
+        int x = filechooser.showDialog(this, "Chon file");
+        if (x == JFileChooser.APPROVE_OPTION) {
+            txtfilename.setText(filechooser.getSelectedFile().getAbsolutePath());
         }
- 
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtfilenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfilenameActionPerformed
@@ -158,17 +158,18 @@ public class GuiDeTaiForm extends javax.swing.JFrame {
         filename = txtfilename.getText();
         try {
             dt.DocDL(filename);
+            JOptionPane.showMessageDialog(null, "Gửi đề tài thành công \n");
         } catch (Exception ex) {
             Logger.getLogger(GuiDeTaiForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Gửi đề tài thất bại \n");
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-           int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit","Exit",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
+        int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit", "Exit", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
             new DangNhapGiaoVienForm().setVisible(true);
             this.setVisible(false);
         }

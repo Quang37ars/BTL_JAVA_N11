@@ -16,9 +16,10 @@ import javax.swing.JOptionPane;
  * @author 2XHQ
  */
 public class ThemSinhVienForm extends javax.swing.JFrame {
-    
+
     private SinhVien sv;
     private executeSQL exsql = new executeSQL();
+
     /**
      * Creates new form SinhVienForm
      */
@@ -26,7 +27,7 @@ public class ThemSinhVienForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         paneNT.setVisible(false);
-        
+
     }
 
     /**
@@ -226,10 +227,10 @@ public class ThemSinhVienForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if(txtMaSV.getText().trim() == null){
-            JOptionPane.showMessageDialog(null,"Bạn không được bỏ trống mã sinh viên \n");
+        if (txtMaSV.getText().trim() == null) {
+            JOptionPane.showMessageDialog(null, "Bạn không được bỏ trống mã sinh viên \n");
         }
-        if(rb2.isSelected()){
+        if (rb2.isSelected()) {
             sv = new SinhVien();
             sv.setMaSV(txtMaSV.getText());
             sv.setMaNhom(Integer.parseInt(txtNhom.getText()));
@@ -237,33 +238,35 @@ public class ThemSinhVienForm extends javax.swing.JFrame {
             sv.setTenSV(txtTenSV.getText());
             try {
                 exsql.insertSVc(sv);
-                JOptionPane.showMessageDialog(null,"Thêm sinh viên thành công\n");
+                JOptionPane.showMessageDialog(null, "Thêm sinh viên thành công\n");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Thêm sinh viên thất bại kiểm tra lại mã sinh viên\n");
+                JOptionPane.showMessageDialog(null, "Thêm sinh viên thất bại kiểm tra lại mã sinh viên\n");
             }
-        }else
-        if(rb1.isSelected()){
+        } else if (rb1.isSelected()) {
             sv = new SinhVien();
             sv.setMaSV(txtMaSV.getText());
             sv.setMaNhom(Integer.parseInt(txtNhom.getText()));
             sv.setHoSV(txtHoSV.getText());
             sv.setTenSV(txtTenSV.getText());
-            if(rb3.isSelected()) sv.setNhomTruong(true);
+            if (rb3.isSelected()) {
+                sv.setNhomTruong(true);
+            }
             try {
                 exsql.insertSVm(sv);
-                JOptionPane.showMessageDialog(null,"Thêm sinh viên thành công\n");
+                JOptionPane.showMessageDialog(null, "Thêm sinh viên thành công\n");
             } catch (Exception ex) {
                 Logger.getLogger(ThemSinhVienForm.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null,"Thêm sinh viên thất bại kiểm tra lại mã sinh viên và mã nhóm\n" + ex);
+                JOptionPane.showMessageDialog(null, "Thêm sinh viên thất bại kiểm tra lại mã sinh viên và mã nhóm\n" + ex);
             }
-        }else
-            JOptionPane.showMessageDialog(null,"Hãy chọn nhóm\n");
+        } else {
+            JOptionPane.showMessageDialog(null, "Hãy chọn nhóm\n");
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
         // TODO add your handling code here:
         paneNT.setVisible(true);
-        
+
     }//GEN-LAST:event_rb1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

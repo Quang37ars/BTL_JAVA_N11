@@ -9,17 +9,17 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class XuatFileForm extends javax.swing.JFrame {
 
-  XuatFileController xuatFileController = new XuatFileController();
-  HSSFWorkbook workbook = new HSSFWorkbook();
-  ArrayList<Lop> dsLop = new ArrayList<>();
-  ArrayList<DanhGia> dsDanhGia = new ArrayList<>();
-  
-  public XuatFileForm() {
-    initComponents();
-    xuatFileController.init(this, jComboBoxDSLop, dsLop);
-  }
-  
-  @SuppressWarnings("unchecked")
+    XuatFileController xuatFileController = new XuatFileController();
+    HSSFWorkbook workbook = new HSSFWorkbook();
+    ArrayList<Lop> dsLop = new ArrayList<>();
+    ArrayList<DanhGia> dsDanhGia = new ArrayList<>();
+
+    public XuatFileForm() {
+        initComponents();
+        xuatFileController.init(this, jComboBoxDSLop, dsLop);
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -96,57 +96,57 @@ public class XuatFileForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
-    new DangNhapGiaoVienForm().setVisible(true);
-    this.setVisible(false);
+      new DangNhapGiaoVienForm().setVisible(true);
+      this.setVisible(false);
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 
   private void jButtonXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatFileActionPerformed
-    // TODO add your handling code here:
-    int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn xuất file không?", "Alert", JOptionPane.YES_NO_OPTION);
-    if(dialogBtn == JOptionPane.YES_OPTION) {
-      for(int i = 0; i < jComboBoxDSLop.getItemCount(); i ++) {
-        if(i == jComboBoxDSLop.getSelectedIndex()) {
-          xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-          this.dispose();
-        }
+      // TODO add your handling code here:
+      int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn xuất file không?", "Alert", JOptionPane.YES_NO_OPTION);
+      if (dialogBtn == JOptionPane.YES_OPTION) {
+          for (int i = 0; i < jComboBoxDSLop.getItemCount(); i++) {
+              if (i == jComboBoxDSLop.getSelectedIndex()) {
+                  xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
+                  this.dispose();
+              }
+          }
       }
-    }
   }//GEN-LAST:event_jButtonXuatFileActionPerformed
 
-  public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-        if ("Nimbus".equals(info.getName())) {
-          javax.swing.UIManager.setLookAndFeel(info.getClassName());
-          break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-      }
-    } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(XuatFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        new XuatFileForm().setVisible(true);
-      }
-    });
-  }
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new XuatFileForm().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonQuayLai;

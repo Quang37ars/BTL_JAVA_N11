@@ -5,7 +5,6 @@
  */
 package View;
 
-
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -20,12 +19,13 @@ import Model.DangNhap;
  * @author quang
  */
 public class ManHinhDangNhap extends javax.swing.JFrame {
+
     public static DangNhap taikhoan;
-    Connection conn=null;
-    PreparedStatement ps=null;
-    ResultSet rs=null;
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
     executeSQL ex = new executeSQL();
-    
+
     public ManHinhDangNhap() {
         initComponents();
         setLocationRelativeTo(null);
@@ -125,55 +125,50 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame("EXIT");
-        if(JOptionPane.showConfirmDialog(frame, "Bạn có chắc chắn muốn thoát!!","EXIT",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+        if (JOptionPane.showConfirmDialog(frame, "Bạn có chắc chắn muốn thoát!!", "EXIT", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-         //TODO add your handling code here:
-       String mk = new String(txtMatKhau.getPassword());
-       String tk = txtTaikhoan.getText();
-       if(tk.equals("")){
+        //TODO add your handling code here:
+        String mk = new String(txtMatKhau.getPassword());
+        String tk = txtTaikhoan.getText();
+        if (tk.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng điền tài khoản");
-       }
-       else if(mk.equals("")){
-           JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
-       }
-       else{
-            try{
-                  ex.selectDSTK();
-                  for(DangNhap dn:ex.getDstk()){
-                      if(tk.equals(dn.getUsername()) && mk.equals(dn.getPassword())){
-                          System.out.println("shjdgj");
-                          if(dn.getQuyen().equals("GV")){
-                              this.setVisible(false);
-                              new DangNhapGiaoVienForm().setVisible(true);
-                              return;
-                          }
-                          else if(dn.getQuyen().equals("NT")){
-                              taikhoan = dn;
-                              this.setVisible(false);
-                              new DangNhapNhomTruongForm().setVisible(true);
-                              return;
-                          }
-                          else if(dn.getQuyen().equals("TV")){
-                              taikhoan = dn;
-                              this.setVisible(false);
-                              new DangNhapSinhVienForm().setVisible(true);
-                              return;
-                          }
-                      }
-                  }
-                  JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu!!!","Eror",EXIT_ON_CLOSE);
-               
-            }
-            catch(Exception ex){
+        } else if (mk.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
+        } else {
+            try {
+                ex.selectDSTK();
+                for (DangNhap dn : ex.getDstk()) {
+                    if (tk.equals(dn.getUsername()) && mk.equals(dn.getPassword())) {
+                        System.out.println("shjdgj");
+                        if (dn.getQuyen().equals("GV")) {
+                            this.setVisible(false);
+                            new DangNhapGiaoVienForm().setVisible(true);
+                            return;
+                        } else if (dn.getQuyen().equals("NT")) {
+                            taikhoan = dn;
+                            this.setVisible(false);
+                            new DangNhapNhomTruongForm().setVisible(true);
+                            return;
+                        } else if (dn.getQuyen().equals("TV")) {
+                            taikhoan = dn;
+                            this.setVisible(false);
+                            new DangNhapSinhVienForm().setVisible(true);
+                            return;
+                        }
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu!!!", "Eror", EXIT_ON_CLOSE);
+
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
 
-        
+
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
     /**

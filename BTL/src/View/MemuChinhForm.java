@@ -1,7 +1,5 @@
 package View;
 
-
-
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -10,7 +8,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ledan
@@ -20,7 +17,7 @@ public class MemuChinhForm extends javax.swing.JFrame {
     /**
      * Creates new form Memuchinh
      */
-    public MemuChinhForm(){
+    public MemuChinhForm() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -141,9 +138,8 @@ public class MemuChinhForm extends javax.swing.JFrame {
 
     private void jbtnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnthoatActionPerformed
         // TODO add your handling code here:
-        int ret = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát ?","Thông Báo",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
+        int ret = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát ?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_jbtnthoatActionPerformed
@@ -156,7 +152,7 @@ public class MemuChinhForm extends javax.swing.JFrame {
 
     private void jbtnthongbaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnthongbaoActionPerformed
         // TODO add your handling code here:
-        new ThongBaoUI().setVisible(true);
+        new ThongBaoLeaderUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbtnthongbaoActionPerformed
 

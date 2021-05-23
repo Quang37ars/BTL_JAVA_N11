@@ -10,18 +10,17 @@ package Model;
  * @author 2XHQ
  */
 public class Lop {
+
     private String maLop;
     private String tenLop;
     private Integer Siso;
     private String khoa;
     private String tenHP;
-    
-    
 
     public Lop() {
     }
 
-    public Lop(String maLop, String tenLop, Integer Siso,String khoa,String tenHP ) {
+    public Lop(String maLop, String tenLop, Integer Siso, String khoa, String tenHP) {
         this.maLop = maLop;
         this.tenLop = tenLop;
         this.tenHP = tenHP;
@@ -73,7 +72,5 @@ public class Lop {
     public void setSiso(Integer Siso) {
         this.Siso = Siso;
     }
-    
-    
-    
+
 }

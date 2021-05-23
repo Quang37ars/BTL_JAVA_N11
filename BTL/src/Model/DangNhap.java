@@ -5,26 +5,21 @@
  */
 package Model;
 
-
-
-
 public class DangNhap {
+
     private String username;
-    private  String password;
+    private String password;
     private String quyen;
-   
-    
+
     public DangNhap() {
     }
 
-    public DangNhap(String username, String password,String quyen) {
+    public DangNhap(String username, String password, String quyen) {
         this.username = username;
         this.password = password;
-        this.quyen=quyen;
+        this.quyen = quyen;
     }
 
-    
-    
     public String getUsername() {
         return username;
     }
@@ -53,6 +48,5 @@ public class DangNhap {
     public String toString() {
         return "Dangnhap{" + "username=" + username + ", password=" + password + ", quyen=" + quyen + '}';
     }
-  
-    
+
 }

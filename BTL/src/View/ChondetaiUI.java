@@ -1,8 +1,5 @@
 package View;
 
-
-
-
 import Control.executeSQL;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -12,26 +9,24 @@ import CustomTable.CustomTableDeTai;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ledan
  */
-
 public class ChondetaiUI extends javax.swing.JFrame {
+
     /**
      * Creates new form ChondetaiUI
      */
     ArrayList<DeTai> listdt;
     int selectedRow = 0;
     executeSQL ex = new executeSQL();
+
     public ChondetaiUI() {
         initComponents();
         setLocationRelativeTo(null);
@@ -40,10 +35,10 @@ public class ChondetaiUI extends javax.swing.JFrame {
         hienThiBang();
     }
 
-    public void hienThiBang()
-    {
+    public void hienThiBang() {
         jTableDetai.setModel(new CustomTableDeTai(listdt));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,9 +117,8 @@ public class ChondetaiUI extends javax.swing.JFrame {
 
     private void jbtnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnthoatActionPerformed
         // TODO add your handling code here:
-        int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
+        int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ", "Exit", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
             new DangNhapNhomTruongForm().setVisible(true);
             this.setVisible(false);
         }
@@ -133,10 +127,9 @@ public class ChondetaiUI extends javax.swing.JFrame {
     private void jTableDetaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDetaiMouseClicked
         // TODO add your handling code here:
         selectedRow = jTableDetai.getSelectedRow();
-        int ret = JOptionPane.showConfirmDialog(null, "Bạn chọn đề tài này ?","Thông báo",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
-            JOptionPane.showConfirmDialog(null, "Chọn thành công", "Thông báo",JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        int ret = JOptionPane.showConfirmDialog(null, "Bạn chọn đề tài này ?", "Thông báo", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
+            JOptionPane.showConfirmDialog(null, "Chọn thành công", "Thông báo", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
             try {
                 ex.setTrangthaidt(listdt.get(selectedRow).getMaDeTai());
             } catch (Exception ex) {

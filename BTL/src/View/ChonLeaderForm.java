@@ -6,6 +6,7 @@
 package View;
 
 import Control.ChonTruongNhomController;
+import Control.ConnectDB;
 import Control.TaoLopController;
 import Control.executeSQL;
 import CustomTable.CustomTableChonNhomTruong;
@@ -18,18 +19,20 @@ import javax.swing.JOptionPane;
  * @author 2XHQ
  */
 public class ChonLeaderForm extends javax.swing.JFrame {
+
     public static ChonLeaderForm cld = new ChonLeaderForm();
     ChonTruongNhomController ctm = new ChonTruongNhomController();
+    ConnectDB db = new ConnectDB();
+
     public ChonLeaderForm() {
         initComponents();
         setLocationRelativeTo(null);
         tableSV.setModel(new CustomTableChonNhomTruong(ctm.getsvnhom()));
         lbNameNhom.setText(n.toString());
         n++;
-        
+
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,38 +184,48 @@ public class ChonLeaderForm extends javax.swing.JFrame {
     int t = -1;
     int f = 0;
     Integer n = 1;
-    
+
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
 
-       
         lbNameNhom.setText(n.toString());
-        if(rb1.isSelected()) t =0;
-        if(rb2.isSelected()) t = 1;
-        if(rb3.isSelected()) t =2;
-        if(rb4.isSelected()) t =3;
-        if(rb5.isSelected()) t =4;
-        if(t == -1){
-            JOptionPane.showMessageDialog(null,"Vui lòng chọn nhóm trưởng trước khi save\n");
-        }else{
-            ctm.setNhomTruong(f*5 +t);
+        if (rb1.isSelected()) {
+            t = 0;
+        }
+        if (rb2.isSelected()) {
+            t = 1;
+        }
+        if (rb3.isSelected()) {
+            t = 2;
+        }
+        if (rb4.isSelected()) {
+            t = 3;
+        }
+        if (rb5.isSelected()) {
+            t = 4;
+        }
+        if (t == -1) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn nhóm trưởng trước khi save\n");
+        } else {
+            ctm.setNhomTruong(f * 5 + t);
             f++;
             n++;
-            if(f != TaoLopController.sonhom){
-            tableSV.removeAll();
-            tableSV.setModel(new CustomTableChonNhomTruong(ctm.getsvnhom()));
-            buttonGroup1.clearSelection();
-            }else
-                JOptionPane.showMessageDialog(null,"Đã hết nhóm vui lòng thoát để lưu vào CSDL\n");
-        
+            if (f != TaoLopController.sonhom) {
+                tableSV.removeAll();
+                tableSV.setModel(new CustomTableChonNhomTruong(ctm.getsvnhom()));
+                buttonGroup1.clearSelection();
+            } else {
+                JOptionPane.showMessageDialog(null, "Đã hết nhóm vui lòng thoát để lưu vào CSDL\n");
+            }
+
         }
-        
-        
+
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         try {
             // TODO add your handling code here:
-           ctm.insertDataLop();
+            ctm.insertDataLop();
         } catch (Exception ex) {
             Logger.getLogger(ChonLeaderForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -247,7 +260,7 @@ public class ChonLeaderForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

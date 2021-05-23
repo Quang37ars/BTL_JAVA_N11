@@ -23,39 +23,37 @@ import org.apache.poi.ss.usermodel.Workbook;
  * @author phamt
  */
 public class UploaddetaiController {
+
     public static ArrayList<DeTai> list = new ArrayList<>();
     static Workbook wb;
     static Sheet sheet;
     static DeTai dt;
-    
+
     executeSQL DL = new executeSQL();
 //    String filename = "‪C:\\Users\\phamt\\Desktop\\detaiBTL.xls";
-      
-    public void DocDL(String filename) throws IOException, FileNotFoundException, Exception{
-   
-            FileInputStream file = new FileInputStream(filename);
-            
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
-            HSSFSheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-            
-            rowIterator.next();
-            while(rowIterator.hasNext())
-            {
-                Row row = rowIterator.next();
-                dt = new DeTai();
-                dt.setMaDeTai(row.getCell(0).getStringCellValue());
-                dt.setTenDeTai(row.getCell(1).getStringCellValue());
-                
-                list.add(dt);
-            }
-            file.close();
-            for(DeTai i:list)
-            {
-                DL.insertdataDeTai(i);
-            }
 
-        
+    public void DocDL(String filename) throws IOException, FileNotFoundException, Exception {
+
+        FileInputStream file = new FileInputStream(filename);
+
+        HSSFWorkbook workbook = new HSSFWorkbook(file);
+        HSSFSheet sheet = workbook.getSheetAt(0);
+        Iterator<Row> rowIterator = sheet.iterator();
+
+        rowIterator.next();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            dt = new DeTai();
+            dt.setMaDeTai(row.getCell(0).getStringCellValue());
+            dt.setTenDeTai(row.getCell(1).getStringCellValue());
+
+            list.add(dt);
+        }
+        file.close();
+        for (DeTai i : list) {
+            DL.insertdataDeTai(i);
+        }
+
     }
 
 }

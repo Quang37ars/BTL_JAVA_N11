@@ -10,8 +10,10 @@ package Model;
  * @author phamt
  */
 public class BaiTap {
+
     public String maBaiTap, ghiChu, linkBaiTap;
     public Integer maNhom;
+
     public Integer getMaNhom() {
         return maNhom;
     }
@@ -30,8 +32,7 @@ public class BaiTap {
     public BaiTap(String maBaiTap) {
         this.maBaiTap = maBaiTap;
     }
-    
-    
+
     public String getMaBaiTap() {
         return maBaiTap;
     }
@@ -56,6 +57,4 @@ public class BaiTap {
         this.linkBaiTap = linkBaiTap;
     }
 
-    
 }
-

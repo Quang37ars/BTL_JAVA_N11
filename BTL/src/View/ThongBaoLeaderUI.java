@@ -1,28 +1,29 @@
 package View;
 
-
 import Control.executeSQL;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import Model.ThongBao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ledan
  */
-public class ThongBao extends javax.swing.JFrame {
+public class ThongBaoLeaderUI extends javax.swing.JFrame {
 
     /**
      * Creates new form ThongBaoUI
      */
     executeSQL ex = new executeSQL();
-    public ThongBao() {
+
+    public ThongBaoLeaderUI() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -39,13 +40,13 @@ public class ThongBao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtxtthongbao = new javax.swing.JTextField();
         jbtngui = new javax.swing.JButton();
+        jbtnhuy = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jtxtfile = new javax.swing.JTextField();
+        jtxtfiledinhkem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jLabel1.setText("Nhập thông báo: ");
 
@@ -53,6 +54,13 @@ public class ThongBao extends javax.swing.JFrame {
         jbtngui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnguiActionPerformed(evt);
+            }
+        });
+
+        jbtnhuy.setText("Hủy");
+        jbtnhuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnhuyActionPerformed(evt);
             }
         });
 
@@ -64,7 +72,7 @@ public class ThongBao extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel2.setText("Thông báo");
+        jLabel2.setText("Gửi thông báo");
 
         jLabel3.setText("File đính kèm: ");
 
@@ -72,45 +80,51 @@ public class ThongBao extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(195, 195, 195))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jbtngui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(145, 145, 145)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtxtthongbao, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtfile, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtxtthongbao, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtxtfiledinhkem, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(jLabel2)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addGap(145, 145, 145)
+                        .addComponent(jbtngui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(jbtnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2)
-                .addGap(48, 48, 48)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtxtthongbao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                    .addComponent(jtxtthongbao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtxtfile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtfiledinhkem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtngui, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,22 +133,28 @@ public class ThongBao extends javax.swing.JFrame {
     private void jbtnguiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnguiActionPerformed
         try {
             // TODO add your handling code here:
-            ex.guiThongBaoGV(jtxtthongbao.getText(),jtxtfile.getText());
+            ex.guiThongBao(jtxtthongbao.getText(), jtxtfiledinhkem.getText());
         } catch (Exception ex) {
-            Logger.getLogger(ThongBao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThongBaoLeaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showConfirmDialog(null,"Gui thong bao thanh cong","Thong bao",JOptionPane.OK_OPTION);
+        JOptionPane.showConfirmDialog(null, "Gửi thông báo thành công", "Thông báo", JOptionPane.OK_OPTION);
+
     }//GEN-LAST:event_jbtnguiActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-           int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
-            new DangNhapGiaoVienForm().setVisible(true);
+        int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ", "Exit", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
+            new DangNhapNhomTruongForm().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jbtnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhuyActionPerformed
+        // TODO add your handling code here:
+        jtxtthongbao.setText("");
+        jtxtfiledinhkem.setText("");
+    }//GEN-LAST:event_jbtnhuyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,13 +173,13 @@ public class ThongBao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongBaoLeaderUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongBaoLeaderUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongBaoLeaderUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThongBaoLeaderUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +189,7 @@ public class ThongBao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThongBao().setVisible(true);
+                new ThongBaoLeaderUI().setVisible(true);
             }
         });
     }
@@ -180,7 +200,8 @@ public class ThongBao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbtngui;
-    private javax.swing.JTextField jtxtfile;
+    private javax.swing.JButton jbtnhuy;
+    private javax.swing.JTextField jtxtfiledinhkem;
     private javax.swing.JTextField jtxtthongbao;
     // End of variables declaration//GEN-END:variables
 }

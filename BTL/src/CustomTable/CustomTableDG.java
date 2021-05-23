@@ -8,19 +8,21 @@ package CustomTable;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import Model.DanhGia;
+
 /**
  *
  * @author ledan
  */
 public class CustomTableDG extends AbstractTableModel {
-    private String name[] = {"Mã nhóm","Điểm"};
-    private Class classes[] = {String.class,float.class};
+
+    private String name[] = {"Mã nhóm", "Điểm"};
+    private Class classes[] = {String.class, float.class};
     ArrayList<DanhGia> dsdg = new ArrayList<DanhGia>();
 
     public CustomTableDG(ArrayList<DanhGia> list) {
         this.dsdg = list;
     }
-    
+
     @Override
     public int getRowCount() {
         return dsdg.size();
@@ -33,11 +35,13 @@ public class CustomTableDG extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int i, int i1) {
-        switch(i1)
-        {
-            case 0: return dsdg.get(i).getManhom();
-            case 1: return dsdg.get(i).getDiem();
-            default: return null;
+        switch (i1) {
+            case 0:
+                return dsdg.get(i).getManhom();
+            case 1:
+                return dsdg.get(i).getDiem();
+            default:
+                return null;
         }
     }
 
@@ -50,5 +54,5 @@ public class CustomTableDG extends AbstractTableModel {
     public String getColumnName(int i) {
         return name[i];
     }
-    
+
 }

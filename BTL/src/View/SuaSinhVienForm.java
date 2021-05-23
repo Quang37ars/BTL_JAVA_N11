@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
  * @author 2XHQ
  */
 public class SuaSinhVienForm extends javax.swing.JFrame {
+
     executeSQL exsql = new executeSQL();
+
     /**
      * Creates new form SinhVienFormSua
      */
@@ -29,8 +31,10 @@ public class SuaSinhVienForm extends javax.swing.JFrame {
         txtNhom.setText(k.toString());
         txtHoSV.setText(sv.getHoSV());
         txtTenSV.setText(sv.getTenSV());
-        if(sv.isNhomTruong()) rb3.setSelected(true);
-        
+        if (sv.isNhomTruong()) {
+            rb3.setSelected(true);
+        }
+
     }
 
     /**
@@ -198,12 +202,14 @@ public class SuaSinhVienForm extends javax.swing.JFrame {
         sv.setMaNhom(Integer.parseInt(txtNhom.getText()));
         sv.setHoSV(txtHoSV.getText());
         sv.setTenSV(txtTenSV.getText());
-        if(rb3.isSelected()) sv.setNhomTruong(true);
+        if (rb3.isSelected()) {
+            sv.setNhomTruong(true);
+        }
         try {
             exsql.updateSV(sv);
-            JOptionPane.showMessageDialog(null,"Sửa thông tin thành công \n");
+            JOptionPane.showMessageDialog(null, "Sửa thông tin thành công \n");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Sửa thông tin thất bại\n");
+            JOptionPane.showMessageDialog(null, "Sửa thông tin thất bại\n");
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 

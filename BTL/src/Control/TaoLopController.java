@@ -19,34 +19,35 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-
-
-
-
-
 /**
  *
  * @author 2XHQ
  */
 public class TaoLopController {
+
     public static ArrayList<SinhVien> list = new ArrayList<>();
     static Workbook wb;
     static Sheet sheet;
     static SinhVien sv;
     public static int sonhom;
     public static Lop lop = new Lop();
-   // String filename1 = "C:\\Users\\2XHQ\\Desktop\\Sinhvien.xls";
+    // String filename1 = "C:\\Users\\2XHQ\\Desktop\\Sinhvien.xls";
     executeSQL exsql = new executeSQL();
-    public TaoLopController(){
-        
+    ConnectDB db = new ConnectDB();
+
+    public TaoLopController() {
+
     }
-         public void DocDL(String filename) throws FileNotFoundException, IOException, Exception {
+
+    public void DocDL(String filename) throws FileNotFoundException, IOException, Exception {
         //doc file 
-        FileInputStream file = new FileInputStream(filename);
         
+        list.clear();
+        FileInputStream file = new FileInputStream(filename);
+
         HSSFWorkbook workbook = new HSSFWorkbook(file);
         HSSFSheet sheet = workbook.getSheetAt(0);
-        
+
         Iterator<Row> rowIterator = sheet.iterator();
         //lay du lieu lop
         Row r = rowIterator.next();
@@ -57,10 +58,13 @@ public class TaoLopController {
         r = rowIterator.next();
         lop.setTenHP(r.getCell(1).getStringCellValue());
         double a = r.getCell(3).getNumericCellValue();
-        lop.setSiso((int)a);
+        lop.setSiso((int) a);
         //tim so nhom
-        if(lop.getSiso() % 5 == 0) sonhom =  lop.getSiso() /5;
-                else sonhom =  lop.getSiso() /5 + 1;
+        if (lop.getSiso() % 5 == 0) {
+            sonhom = lop.getSiso() / 5;
+        } else {
+            sonhom = lop.getSiso() / 5 + 1;
+        }
         //lay du leu sinh vien
         rowIterator.next();
         while (rowIterator.hasNext()) {
@@ -74,44 +78,42 @@ public class TaoLopController {
             list.add(sv);
         }
         file.close();
-        }
-         public static void main(String[] args) {
-        
     }
-        public void TaoNhomRanDom(){
-            //xao tron vi tri trong list
-            Collections.shuffle(list);
-            int i =1;
-            int nhom = 1;
-            Iterator<SinhVien> it = list.iterator();
-            while(it.hasNext()){
-                it.next().setMaNhom(nhom);
-                i++;
-                if(i == 6){
-                    i = 1;
-                    nhom ++; 
-                }
-            }
-        }
-       public void TaoNhomThuong(){
-            int i =1;
-            int nhom = 1;
-            Iterator<SinhVien> it = list.iterator();
-            while(it.hasNext()){
-                it.next().setMaNhom(nhom);
-                i++;
-                if(i == 6){
-                    i = 1;
-                    nhom ++;
-                }
-            }
-        }
-       
 
-       
+    public static void main(String[] args) {
 
     }
-    
-        
-    
 
+    public void TaoNhomRanDom() {
+        //xao tron vi tri trong list
+        Collections.shuffle(list);
+        int i = 1;
+        db.getConnect();
+        int nhom = db.getmaNhomMax()+1;
+        Iterator<SinhVien> it = list.iterator();
+        while (it.hasNext()) {
+            it.next().setMaNhom(nhom);
+            i++;
+            if (i == 6) {
+                i = 1;
+                nhom++;
+            }
+        }
+    }
+
+    public void TaoNhomThuong() {
+        int i = 1;
+        db.getConnect();
+        int nhom = db.getmaNhomMax()+1;
+        Iterator<SinhVien> it = list.iterator();
+        while (it.hasNext()) {
+            it.next().setMaNhom(nhom);
+            i++;
+            if (i == 6) {
+                i = 1;
+                nhom++;
+            }
+        }
+    }
+
+}

@@ -24,6 +24,7 @@ public class BAITAPUI extends javax.swing.JFrame {
      */
     ArrayList<BaiTap> listbt = new ArrayList<BaiTap>();
     executeSQL ex = new executeSQL();
+
     public BAITAPUI() throws SQLException {
         initComponents();
         setLocationRelativeTo(null);
@@ -31,7 +32,8 @@ public class BAITAPUI extends javax.swing.JFrame {
         listbt = ex.getDsbt();
         hienThiBang();
     }
-    public void hienThiBang(){
+
+    public void hienThiBang() {
         jTable1.setModel(new CustomTableBaiTap(listbt));
     }
 

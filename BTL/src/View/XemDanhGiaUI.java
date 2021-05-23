@@ -1,7 +1,5 @@
 package View;
 
-
-
 import Control.executeSQL;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -13,7 +11,6 @@ import Model.DanhGia;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ledan
@@ -25,6 +22,7 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
      */
     ArrayList<DanhGia> listdg = new ArrayList<DanhGia>();
     executeSQL ex = new executeSQL();
+
     public XemDanhGiaUI() {
         initComponents();
         setLocationRelativeTo(null);
@@ -32,8 +30,8 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
         listdg = ex.getDsdg();
         hienthibang();
     }
-    public void hienthibang()
-    {
+
+    public void hienthibang() {
         jTableDanhgia.setModel(new CustomTableDG(listdg));
     }
 
@@ -112,17 +110,17 @@ public class XemDanhGiaUI extends javax.swing.JFrame {
 
     private void jbtnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnthoatActionPerformed
         // TODO add your handling code here:
-         int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ","Exit",JOptionPane.YES_NO_OPTION);
-        if(ret == JOptionPane.YES_OPTION)
-        {
-            if(ManHinhDangNhap.taikhoan.getQuyen() == "NT"){
-            new DangNhapNhomTruongForm().setVisible(true);
-            this.setVisible(false);
-            }else{
+        int ret = JOptionPane.showConfirmDialog(null, "Do you want to exit ? ", "Exit", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION) {
+            if (ManHinhDangNhap.taikhoan.getQuyen() == "NT") {
+                new DangNhapNhomTruongForm().setVisible(true);
+                this.setVisible(false);
+            } else {
                 new DangNhapSinhVienForm().setVisible(true);
-            this.setVisible(false);
-            }}
-        
+                this.setVisible(false);
+            }
+        }
+
     }//GEN-LAST:event_jbtnthoatActionPerformed
 
     /**

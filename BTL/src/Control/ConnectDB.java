@@ -188,74 +188,75 @@ public class ConnectDB {
         }
         return list;
     }
+
     //Quang 36
-    public ArrayList<DeTai> getdsDeTaiQ2(String sql)  {
+    public ArrayList<DeTai> getdsDeTaiQ2(String sql) {
         ArrayList<DeTai> ds = new ArrayList<DeTai>();
         try {
-                stm = cnn.createStatement();
-                rs = stm.executeQuery(sql);
-                while (rs.next()) {
-                    DeTai dt = new DeTai(rs.getString(1), 
-                            rs.getString(2),rs.getString(3));
-                    ds.add(dt);                        
-                }                                
-        } catch (Exception ex) {           
-            System.out.println("loi getData "+ ex.toString());
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                DeTai dt = new DeTai(rs.getString(1),
+                        rs.getString(2), rs.getString(3));
+                ds.add(dt);
+            }
+        } catch (Exception ex) {
+            System.out.println("loi getData " + ex.toString());
             return null;
         }
         return ds;
     }
-    public ArrayList<DanhGia> getDataDG(String sql)  {
+
+    public ArrayList<DanhGia> getDataDG(String sql) {
         ArrayList<DanhGia> ds = new ArrayList<DanhGia>();
         try {
-                stm = cnn.createStatement();
-                rs = stm.executeQuery(sql);
-                while (rs.next()) {
-                    DanhGia dg = new DanhGia(rs.getString(1), 
-                            rs.getInt(2),rs.getDouble(3));
-                    ds.add(dg);                        
-                }                                
-        } catch (Exception ex) {           
-            System.out.println("loi getData "+ ex.toString());
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                DanhGia dg = new DanhGia(rs.getString(1),
+                        rs.getInt(2), rs.getDouble(3));
+                ds.add(dg);
+            }
+        } catch (Exception ex) {
+            System.out.println("loi getData " + ex.toString());
             return null;
         }
         return ds;
     }
-    public int getmanhom(String sql)
-{
-    int manhom = 0;
-    try {
-                stm = cnn.createStatement();
-                rs = stm.executeQuery(sql);    
-                while(rs.next())
-                {
-                    manhom = rs.getInt(1);
-                }
-        } catch (Exception ex) {           
-            System.out.println("loi getData "+ ex.toString());
+
+    public int getmanhom(String sql) {
+        int manhom = 0;
+        try {
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                manhom = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("loi getData " + ex.toString());
             return 0;
         }
         return manhom;
-}
+    }
+
     // Quý
-        public ArrayList<BaiTap> getDataBT(String sql) throws SQLException{
+    public ArrayList<BaiTap> getDataBT(String sql) throws SQLException {
         ArrayList<BaiTap> ds = new ArrayList<BaiTap>();
-        try{
+        try {
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 BaiTap bt = new BaiTap(rs.getString(1),
-                        rs.getString(2),rs.getString(3),rs.getInt(4));
+                        rs.getString(2), rs.getString(3), rs.getInt(4));
                 ds.add(bt);
             }
-        }
-                catch(Exception ex)
-        {
-            System.out.println("loi get data "+ ex.toString());
+        } catch (Exception ex) {
+            System.out.println("loi get data " + ex.toString());
             return null;
         }
         return ds;
     }
+
     //Quân
     public void insertBaiTap(String maBaiTap, String ghiChu, String linkBaiTap, int maNhom) {
         String insertSQL = "INSERT INTO BAITAP VALUES(?, ?, ?, ?)";
@@ -269,97 +270,138 @@ public class ConnectDB {
             preSta.executeUpdate();
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Loi chen du lieu\n"+ex);
+            JOptionPane.showMessageDialog(null, "Loi chen du lieu\n" + ex);
         }
-  }
+    }
+
     public void getMaBaiTap(ArrayList maBT) {
         String sql = "select mabaitap from baitap where mabaitap = (select max(mabaitap) from baitap)";
         try {
             getConnect();
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
-            while(rs.next()) {
-              maBT.add(new BaiTap(rs.getString(1)));
+            while (rs.next()) {
+                maBT.add(new BaiTap(rs.getString(1)));
             }
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu\n"+ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
         }
-    
-  }
-    public void getDataThongBao(ArrayList dsThongBao)  {
+
+    }
+
+    public void getDataThongBao(ArrayList dsThongBao) {
         String sql = "SELECT * FROM THONGBAO";
         try {
             getConnect();
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                dsThongBao.add(new ThongBao(rs.getString(1),rs.getString(2),rs.getString(3)));
-            }  
+                dsThongBao.add(new ThongBao(rs.getString(1), rs.getString(2), rs.getString(3)));
+            }
             closeConnect();
-        } catch (Exception ex) {           
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang THONGBAO \n"+ex.getMessage());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang THONGBAO \n" + ex.getMessage());
         }
-  }
-    public void getDataDanhGia(ArrayList dsDanhGia)  {
+    }
+
+    public void getDataDanhGia(ArrayList dsDanhGia) {
         String sql = "SELECT * FROM DANHGIA";
         try {
             getConnect();
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                dsDanhGia.add(new DanhGia(rs.getString(1),rs.getInt(2),rs.getDouble(3)));
-            }    
+                dsDanhGia.add(new DanhGia(rs.getString(1), rs.getInt(2), rs.getDouble(3)));
+            }
             closeConnect();
-        } catch (Exception ex) {           
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang DANHGIA \n"+ex.getMessage());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang DANHGIA \n" + ex.getMessage());
         }
-  }
+    }
+
     public void selectDanhGiaByTenLop(ArrayList<DanhGia> dsDanhGia, String tenLop) {
-        String selectSQL = "select * from danhgia\n" +
-                           "where manhom in (select manhom from nhom \n" +
-                           "where malop = (select malop from lophoc where tenlop = ?))";
+        String selectSQL = "select * from danhgia\n"
+                + "where manhom in (select manhom from nhom \n"
+                + "where malop = (select malop from lophoc where tenlop = ?))";
         getConnect();
         try {
             PreparedStatement preSta = cnn.prepareStatement(selectSQL);
             preSta.setString(1, tenLop);
             rs = preSta.executeQuery();
             while (rs.next()) {
-              dsDanhGia.add(new DanhGia(rs.getString(1),rs.getInt(2),rs.getDouble(3)));
+                dsDanhGia.add(new DanhGia(rs.getString(1), rs.getInt(2), rs.getDouble(3)));
             }
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu\n"+ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
         }
     }
-    public void getDataLopQuan(ArrayList dsLop)  {
-        String sql = "SELECT * FROM LOPHOC" ;
+
+    public void getDataLopQuan(ArrayList dsLop) {
+        String sql = "SELECT * FROM LOPHOC";
         try {
             getConnect();
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                Lop lop = new Lop(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5));
+                Lop lop = new Lop(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
                 dsLop.add(lop);
-            } 
+            }
             closeConnect();
-        } catch (Exception ex) {           
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang \n"+ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
         }
     }
-    public void getmaNhom(SinhVien sv){
+
+    public void getmaNhom(SinhVien sv) {
         String selectSQL = "SELECT MANHOM FROM SINHVIEN WHERE MASV = ?";
         try {
             getConnect();
             PreparedStatement preSta = cnn.prepareStatement(selectSQL);
             preSta.setString(1, sv.getMaSV());
             rs = preSta.executeQuery();
-            while(rs.next()){
-              sv.setMaNhom(rs.getInt(1));
+            while (rs.next()) {
+                sv.setMaNhom(rs.getInt(1));
             }
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Loi lay du lieu tu bang \n"+ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
         }
     }
+
+    public int getmaNhomMax() {
+        String sql = "SELECT MAX(MANHOM) FROM NHOM";
+        int i = 0;
+        
+        try {
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                int k = rs.getInt(1);
+                if(k*1 == k)
+                i = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
+        }
+        return i;
+    }
+    
+    public String getMaLopChoose(String sql){
+        String kq = "";
+                try {
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                kq = rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
+        }
+        return kq;
+    }
+    
 }

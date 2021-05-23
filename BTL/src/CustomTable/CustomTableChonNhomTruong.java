@@ -14,12 +14,13 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author 2XHQ
  */
-public class CustomTableChonNhomTruong extends AbstractTableModel{
-    private String a[] = {"Mã sinh viên","Tên sinh viên"};
-    private Class classes[] = {String.class,String.class};
+public class CustomTableChonNhomTruong extends AbstractTableModel {
 
-    
+    private String a[] = {"Mã sinh viên", "Tên sinh viên"};
+    private Class classes[] = {String.class, String.class};
+
     ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
+
     @Override
     public int getRowCount() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -39,23 +40,24 @@ public class CustomTableChonNhomTruong extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        switch(columnIndex){
-            case 0: return dsSV.get(rowIndex).getMaSV();
-            case 1: return dsSV.get(rowIndex).getTenSV();
+        switch (columnIndex) {
+            case 0:
+                return dsSV.get(rowIndex).getMaSV();
+            case 1:
+                return dsSV.get(rowIndex).getTenSV();
 
-            
-            default : return null;
+            default:
+                return null;
         }
     }
+
     @Override
-    public Class getColumnClass(int columnIndex)
-    {
+    public Class getColumnClass(int columnIndex) {
         return classes[columnIndex];
     }
 
     @Override
-    public String getColumnName(int column)
-    {
+    public String getColumnName(int column) {
         return a[column];
     }
 }

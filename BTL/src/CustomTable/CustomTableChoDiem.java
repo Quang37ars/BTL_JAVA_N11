@@ -5,7 +5,6 @@
  */
 package CustomTable;
 
-
 import Model.DanhGia;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -14,45 +13,48 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author quang
  */
-public class CustomTableChoDiem extends AbstractTableModel  {
-     private String a[] = {"Mã đánh giá","Mã nhóm","Điểm"};
-    private Class classes[] = {String.class,int.class,Double.class};
+public class CustomTableChoDiem extends AbstractTableModel {
 
-    
-    
+    private String a[] = {"Mã đánh giá", "Mã nhóm", "Điểm"};
+    private Class classes[] = {String.class, int.class, Double.class};
+
     ArrayList<DanhGia> dsDetai = new ArrayList<>();
-     @Override
+
+    @Override
     public int getRowCount() {
         return dsDetai.size();
     }
-    
+
     public CustomTableChoDiem(ArrayList<DanhGia> dsDetai) {
-        this.dsDetai=dsDetai;
+        this.dsDetai = dsDetai;
     }
 
-     @Override
+    @Override
     public int getColumnCount() {
         return a.length;
     }
-    
-     @Override
+
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(columnIndex){
-            case 0: return dsDetai.get(rowIndex).getMadanhgia();
-            case 1: return dsDetai.get(rowIndex).getManhom();
-            case 2: return dsDetai.get(rowIndex).getDiem();
-            default : return null;
+        switch (columnIndex) {
+            case 0:
+                return dsDetai.get(rowIndex).getMadanhgia();
+            case 1:
+                return dsDetai.get(rowIndex).getManhom();
+            case 2:
+                return dsDetai.get(rowIndex).getDiem();
+            default:
+                return null;
         }
     }
-     @Override
-    public Class getColumnClass(int columnIndex)
-    {
+
+    @Override
+    public Class getColumnClass(int columnIndex) {
         return classes[columnIndex];
     }
 
-     @Override
-    public String getColumnName(int column)
-    {
+    @Override
+    public String getColumnName(int column) {
         return a[column];
     }
 }
