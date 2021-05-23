@@ -101,13 +101,13 @@ public class XuatFileForm extends javax.swing.JFrame {
   }//GEN-LAST:event_jButtonQuayLaiActionPerformed
 
   private void jButtonXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatFileActionPerformed
-    // TODO add your handling code here:
     int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn xuất file không?", "Question?", JOptionPane.YES_NO_OPTION);
     if (dialogBtn == JOptionPane.YES_OPTION) {
         for (int i = 0; i < jComboBoxDSLop.getItemCount(); i++) {
             if (i == jComboBoxDSLop.getSelectedIndex()) {
                 xuatFileController.xuatFileAction(workbook, dsDanhGia, jComboBoxDSLop.getSelectedItem().toString());
-                this.dispose();
+                new DangNhapGiaoVienForm().setVisible(true);
+                this.setVisible(false);
             }
         }
     }

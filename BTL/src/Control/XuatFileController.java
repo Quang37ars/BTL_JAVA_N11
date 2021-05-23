@@ -109,13 +109,6 @@ public class XuatFileController {
     }
 
     public void writingExcelFile(HSSFWorkbook workbook, String tenLop) {
-//    JFileChooser saveFile = new JFileChooser();
-//    saveFile.setDialogTitle("Save file");
-//    saveFile.setSelectedFile(new File(".xlsx"));
-//    FileNameExtensionFilter xlsxfilter = new FileNameExtensionFilter("xlsx (*.xlsx)", "xlsx");
-//    saveFile.setFileFilter(xlsxfilter);
-//    if(saveFile.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-//      File output = saveFile.getSelectedFile();
         File a = new File("DanhGia" + tenLop + ".xls");
         try (FileOutputStream out = new FileOutputStream(a)) {
             workbook.write(out);
@@ -133,6 +126,5 @@ public class XuatFileController {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex, "Message", JOptionPane.CLOSED_OPTION);
         }
-//    }
     }
 }
