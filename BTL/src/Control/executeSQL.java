@@ -54,8 +54,6 @@ public class executeSQL {
         db.doSQL(sql);
         sql = "SELECT MALOP FROM LOPHOC WHERE TENLOP = '" + QuanLyLopForm.tl + "'";
         String ml = db.getmalop(sql);
-        sql = "UPDATE FROM NHOM SET MALOP = '" + ml + "' WHERE MANHOM = "+ sv.getMaNhom() + "";
-        db.doSQL(sql);
         sql = "UPDATE LOPHOC SET SISO = SISO + 1 WHERE MALOP = '" + ml + "'";
         db.doSQL(sql);
     }
