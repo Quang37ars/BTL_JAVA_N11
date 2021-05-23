@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author phamt
@@ -60,6 +62,31 @@ public class BaiTap {
 
     public void setLinkBaiTap(String linkBaiTap) {
         this.linkBaiTap = linkBaiTap;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.maBaiTap);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BaiTap other = (BaiTap) obj;
+        if (!Objects.equals(this.maBaiTap, other.maBaiTap)) {
+            return false;
+        }
+        return true;
     }
 
 }

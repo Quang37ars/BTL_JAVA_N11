@@ -12,14 +12,13 @@ public class NopBaiController {
     private final ConnectDB db = new ConnectDB();
 
     public void insertBaiTap(String linkBaiTap, String noiDung, int maNhom) {
-//        ArrayList<BaiTap> m = new ArrayList<>();
-        BaiTap m = new BaiTap();
+        ArrayList<BaiTap> m = new ArrayList<>();
         db.getMaBaiTap(m);
         String a = null;
-        if (m.equals(a)) {
+        if (m.isEmpty()) {
             a = "BT001";
         } else {
-            String b[] = m.getMaBaiTap().split("BT");
+            String b[] = m.get(0).getMaBaiTap().split("BT");
             int maBT = Integer.parseInt(b[1]) + 1;
             switch (dem(maBT)) {
                 case 1:
