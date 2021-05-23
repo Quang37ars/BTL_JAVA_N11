@@ -18,7 +18,7 @@ import javax.swing.table.TableModel;
  * @author quang
  */
 public class ChodiemForm extends javax.swing.JFrame {
-
+    ArrayList<DanhGia> dsDanhgia = new ArrayList<>();
     ArrayList<DanhGia> dsupdate = new ArrayList<>();
     ArrayList<Integer> listmanhom;
     executeSQL ex = new executeSQL();
@@ -66,6 +66,7 @@ public class ChodiemForm extends javax.swing.JFrame {
         txtMadanhgia = new javax.swing.JTextField();
         txtDiem = new javax.swing.JTextField();
         txtManhom = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,17 +118,19 @@ public class ChodiemForm extends javax.swing.JFrame {
             }
         });
 
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(btnsave)
-                        .addGap(95, 95, 95)
-                        .addComponent(btnHuy))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel1))
@@ -150,6 +153,14 @@ public class ChodiemForm extends javax.swing.JFrame {
                                     .addComponent(txtManhom)
                                     .addComponent(txtDiem))))))
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThem)
+                .addGap(47, 47, 47)
+                .addComponent(btnsave)
+                .addGap(76, 76, 76)
+                .addComponent(btnHuy)
+                .addGap(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +184,8 @@ public class ChodiemForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnsave)
-                    .addComponent(btnHuy)))
+                    .addComponent(btnHuy)
+                    .addComponent(btnThem)))
         );
 
         pack();
@@ -202,14 +214,25 @@ public class ChodiemForm extends javax.swing.JFrame {
 
     private void TableChodiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableChodiemMouseClicked
         // TODO add your handling code here:
-        int selectedRow = TableChodiem.getSelectedRow();
-        DanhGia detai = dsDetai.get(selectedRow);
-        txtMadanhgia.setText(detai.getMadanhgia());
-        txtManhom.setText(String.valueOf(detai.getManhom()));
-        txtDiem.setText(String.valueOf(detai.getDiem()));
+        ex.selectDSDanhgia();
+        listmanhom = ex.getMaNhom(GiaoVien_DanhGia.tl);
+        dsDanhgia = ex.getDsDanhGia();
+        for (int i : listmanhom) {
+            for (DanhGia j : dsDanhgia) {
+                if (i == j.getManhom()) {
+                    dsupdate.add(j);
+                }
+            }
+        }
+        TableChodiem.setModel(new CustomTableChoDiem(dsupdate));
 
 
     }//GEN-LAST:event_TableChodiemMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnThemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +279,7 @@ public class ChodiemForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableChodiem;
     private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnsave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
