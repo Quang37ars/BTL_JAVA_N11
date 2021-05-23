@@ -35,6 +35,7 @@ public class BaitapUI extends javax.swing.JFrame {
     public BaitapUI() throws SQLException {
         initComponents();
         setLocationRelativeTo(null);
+        xuatfile.init(this,jComboBoxchonlop,dsLop);
         ex.getBaiTap();
         dsbt = ex.getDsbt();
         hienThiBang();
