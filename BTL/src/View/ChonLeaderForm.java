@@ -183,7 +183,7 @@ public class ChonLeaderForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     int t = -1;
     int f = 0;
-    Integer n = 1;
+    Integer n = 1 + ChonTruongNhomController.k;
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
 

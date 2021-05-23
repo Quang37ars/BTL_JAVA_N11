@@ -23,6 +23,7 @@ public class ChonTruongNhomController {
     Iterator<SinhVien> myiterator;
     ConnectDB db = new ConnectDB();
     executeSQL exsql = new executeSQL();
+    public static int k;
     int sonhom;
     Lop lop;
 
@@ -50,11 +51,11 @@ public class ChonTruongNhomController {
     public void insertDataLop() throws Exception {
 
         db.getConnect();
+        k = db.getmaNhomMax();
         String sql1 = "INSERT INTO LOPHOC "
                 + "VALUES ('" + TaoLopController.lop.getMaLop() + "','" + TaoLopController.lop.getTenLop() + "',"
                 + TaoLopController.lop.getSiso() + ",'" + TaoLopController.lop.getKhoa() + "','" + TaoLopController.lop.getTenHP() + "')";
         db.doSQL(sql1);
-        int k = db.getmaNhomMax();
         for (int i = k+1; i < k + sonhom + 1; i++) {
             String sql3 = "INSERT INTO NHOM(MANHOM,MALOP) "
                     + "VALUES(" + i + ",'" + lop.getMaLop() + "')";
