@@ -438,4 +438,19 @@ public class ConnectDB {
         }
     }
     
+    public ArrayList<Integer> getListMaNhom(String sql){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        try {
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
+        }
+        return  list;
+    }
+        
+    
 }

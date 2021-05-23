@@ -188,7 +188,7 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         });
 
         cbbNhom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbbNhom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ramdom", "Số thứ tự" }));
+        cbbNhom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngẫu nhiên", "Số thứ tự" }));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Đường dẫn");
@@ -200,6 +200,7 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         jLabel6.setText("Tạo lớp");
 
         txtfilename.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfilename.setAutoscrolls(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -402,7 +403,7 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneltab1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addComponent(paneltab1)
         );
 
         pack();
@@ -462,25 +463,28 @@ public class QuanLyLopForm extends javax.swing.JFrame {
 
     private void btnTaoLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoLopActionPerformed
         // TODO add your handling code here:
-        filename = txtfilename.getText();
+        
+        
         try {
+            filename = txtfilename.getText();
             taolop.DocDL(filename);
-            if (cbbNhom.getSelectedItem() == "Ramdom") {
+            if (cbbNhom.getSelectedItem() == "Ngẫu nhiên") {
                 taolop.TaoNhomRanDom();
             } else {
                 taolop.TaoNhomThuong();
             }
             JOptionPane.showMessageDialog(null, "Tạo lớp thành công \n");
         } catch (IOException ex) {
-            Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+            
             JOptionPane.showMessageDialog(null, "Tạo lớp Thất bại \n");
         } catch (Exception ex) {
-            Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+            
+            JOptionPane.showMessageDialog(null, "Tạo lớp Thất bại \n");
         }
         new ChonLeaderForm().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnTaoLopActionPerformed
-
+    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         new ThemSinhVienForm().setVisible(true);

@@ -28,9 +28,6 @@ public class ChonLeaderForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         tableSV.setModel(new CustomTableChonNhomTruong(ctm.getsvnhom()));
-        lbNameNhom.setText(n.toString());
-        n++;
-
     }
 
     /**
@@ -51,7 +48,6 @@ public class ChonLeaderForm extends javax.swing.JFrame {
         rb5 = new javax.swing.JRadioButton();
         btnThoat = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        lbNameNhom = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -82,9 +78,8 @@ public class ChonLeaderForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Nhóm :");
-
-        lbNameNhom.setText("N11");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Hãy chọn nhóm trưởng cho nhóm này : ");
 
         jLabel3.setText("Nhóm trưởng");
 
@@ -114,53 +109,50 @@ public class ChonLeaderForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(263, 263, 263))
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbNameNhom))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rb1)
-                                    .addComponent(rb2)
-                                    .addComponent(rb3)
-                                    .addComponent(rb4)
-                                    .addComponent(rb5)))))
+                                    .addComponent(jLabel3)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rb1)
+                                            .addComponent(rb2)
+                                            .addComponent(rb3)
+                                            .addComponent(rb4)
+                                            .addComponent(rb5)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(btnNext)
+                                .addGap(111, 111, 111)
+                                .addComponent(btnThoat))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(btnNext)
-                        .addGap(111, 111, 111)
-                        .addComponent(btnThoat)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1)))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbNameNhom))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel1)
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(167, 167, 167)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(rb1)
@@ -176,18 +168,18 @@ public class ChonLeaderForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNext)
                     .addComponent(btnThoat))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     int t = -1;
     int f = 0;
-    Integer n = 1 + ChonTruongNhomController.k;
+    
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
 
-        lbNameNhom.setText(n.toString());
+        
         if (rb1.isSelected()) {
             t = 0;
         }
@@ -208,7 +200,7 @@ public class ChonLeaderForm extends javax.swing.JFrame {
         } else {
             ctm.setNhomTruong(f * 5 + t);
             f++;
-            n++;
+            
             if (f != TaoLopController.sonhom) {
                 tableSV.removeAll();
                 tableSV.setModel(new CustomTableChonNhomTruong(ctm.getsvnhom()));
@@ -277,7 +269,6 @@ public class ChonLeaderForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbNameNhom;
     private javax.swing.JRadioButton rb1;
     private javax.swing.JRadioButton rb2;
     private javax.swing.JRadioButton rb3;

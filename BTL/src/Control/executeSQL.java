@@ -112,8 +112,17 @@ public class executeSQL {
 
     public void deleteLop(String MaLop) throws Exception {
         db.getConnect();
-        String sql = "DELETE FROM LOPHOC WHERE MALOP = '" + MaLop + "'";
+        sql ="SELECT MANHOM FROM NHOM WHERE MALOP= '"+MaLop+"'";
+        list = db.getListMaNhom(sql);
+        for(int i:list ){
+            sql = "delete FROM sinhvien where manhom = "+ i+"";
+            db.doSQL(sql);
+        }
+        sql = "delete from nhom where malop = '"+MaLop+"'";
         db.doSQL(sql);
+        sql = "delete from lophoc where malop = '"+MaLop+"'";
+        db.doSQL(sql);
+        
     }
 
     public ArrayList<SinhVien> getSvLopChoose(String tl) throws SQLException {
@@ -208,13 +217,13 @@ public class executeSQL {
     //Quang 36
     public void getDetai() {
         db.getConnect();
-        String sql = "select * from DETAI where TRANGTHAICHON = " + false + "";
+        String sql = "select * from DETAI where TRANGTHAI = 'false'";
         dsdt = db.getdsDeTaiQ2(sql);
     }
 
     public void setTrangthaidt(String u) throws Exception {
         db.getConnect();
-        String sql = "update DETAi set TRANGTHAICHON = '" + true + "'" + " where MADETAI ='" + u + "'";
+        String sql = "update DETAI set TRANGTHAI = '" + true + "'" + " where MADETAI ='" + u + "'";
         db.doSQL(sql);
     }
 

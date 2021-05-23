@@ -56,7 +56,7 @@ public class DangNhapGiaoVienForm extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Giao việc");
+        jButton3.setText("Công việc");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

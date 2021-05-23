@@ -17,15 +17,15 @@ import java.util.Iterator;
  */
 public class ChonTruongNhomController {
 
-    ArrayList<SinhVien> list;
-    int next;
-    ArrayList<SinhVien> svnhom;
-    Iterator<SinhVien> myiterator;
-    ConnectDB db = new ConnectDB();
-    executeSQL exsql = new executeSQL();
-    public static int k;
-    int sonhom;
-    Lop lop;
+    private ArrayList<SinhVien> list;
+    private int next;
+    private ArrayList<SinhVien> svnhom;
+    private Iterator<SinhVien> myiterator;
+    private ConnectDB db = new ConnectDB();
+    private executeSQL exsql = new executeSQL();
+    private int k;
+    private int sonhom;
+    private Lop lop;
 
     public ChonTruongNhomController() {
         list = TaoLopController.list;
