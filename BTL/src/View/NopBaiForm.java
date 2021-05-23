@@ -150,7 +150,12 @@ public class NopBaiForm extends javax.swing.JFrame {
         }
         else {
             String maSV = ManHinhDangNhap.taikhoan.getUsername();
-            nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+            if(jTextAreaNote.getText().equals("")) {
+                nopBaiController.guiBaiAction(jTextFieldPath.getText(), "'Trống'", maSV);
+            }
+            else {
+                nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+            }
             JOptionPane.showMessageDialog(null, "Nộp bài thành công");
         }
     }

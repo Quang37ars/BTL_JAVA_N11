@@ -274,14 +274,14 @@ public class ConnectDB {
         }
     }
 
-    public void getMaBaiTap(ArrayList maBT) {
+    public void getMaBaiTap(BaiTap maBT) {
         String sql = "select mabaitap from baitap where mabaitap = (select max(mabaitap) from baitap)";
         try {
             getConnect();
             stm = cnn.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                maBT.add(new BaiTap(rs.getString(1)));
+                maBT.setMaBaiTap(rs.getString(1));
             }
             closeConnect();
         } catch (SQLException ex) {

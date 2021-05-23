@@ -14,6 +14,11 @@ public class BaiTap {
     public String maBaiTap, ghiChu, linkBaiTap;
     public Integer maNhom;
 
+    public BaiTap() {
+    }
+
+    
+    
     public Integer getMaNhom() {
         return maNhom;
     }
