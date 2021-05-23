@@ -145,24 +145,27 @@ public class NopBaiForm extends javax.swing.JFrame {
   private void jButtonGuiBaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuiBaiActionPerformed
     int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn gửi không", "Confirm", JOptionPane.YES_NO_OPTION);
     if (dialogBtn == JOptionPane.YES_OPTION) {
-        if(jTextFieldPath.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Chua co link bai tap", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            String maSV = ManHinhDangNhap.taikhoan.getUsername();
-            if(jTextAreaNote.getText().equals("")) {
-                nopBaiController.guiBaiAction(jTextFieldPath.getText(), "'Trống'", maSV);
+        try {
+            if(jTextFieldPath.getText().equals("")) {
+                throw new Exception("Chưa có link bài tập");
             }
             else {
-                nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+                String maSV = ManHinhDangNhap.taikhoan.getUsername();
+                if(jTextAreaNote.getText().equals("")) {
+                    nopBaiController.guiBaiAction(jTextFieldPath.getText(), "'Trống'", maSV);
+                }
+                else {
+                    nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+                }
+                JOptionPane.showMessageDialog(null, "Nộp bài thành công");
             }
-            JOptionPane.showMessageDialog(null, "Nộp bài thành công");
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    else {
-        jTextFieldPath.setText("");
-        jTextAreaNote.setText("");
-    }
+    jTextFieldPath.setText("");
+    jTextAreaNote.setText("");
   }//GEN-LAST:event_jButtonGuiBaiActionPerformed
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
