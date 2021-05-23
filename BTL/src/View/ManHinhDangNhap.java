@@ -143,7 +143,6 @@ public class ManHinhDangNhap extends javax.swing.JFrame {
                 ex.selectDSTK();
                 for (DangNhap dn : ex.getDstk()) {
                     if (tk.equals(dn.getUsername()) && mk.equals(dn.getPassword())) {
-                        System.out.println("shjdgj");
                         if (dn.getQuyen().equals("GV")) {
                             this.setVisible(false);
                             new DangNhapGiaoVienForm().setVisible(true);

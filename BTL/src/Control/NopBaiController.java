@@ -21,13 +21,13 @@ public class NopBaiController {
             String b[] = m.get(0).getMaBaiTap().split("BT");
             int maBT = Integer.parseInt(b[1]) + 1;
             switch (dem(maBT)) {
-                case 0:
+                case 1:
                     a = "BT00" + maBT;
                     break;
-                case 1:
+                case 2:
                     a = "BT0" + maBT;
                     break;
-                case 2:
+                case 3:
                     a = "BT" + maBT;
                     break;
             }
@@ -36,7 +36,7 @@ public class NopBaiController {
     }
 
     public int dem(int maBT) {
-        int count = 0;
+        int count = 1;
         while (maBT >= 10) {
             maBT = maBT / 10;
             count++;
@@ -50,14 +50,11 @@ public class NopBaiController {
         jFrameNopBai.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public void guiBaiAction(String linkBaiTap, String noiDung, String maSV) {
+    public void guiBaiAction(String linkBaiTap, String ghiChu, String maSV) {
         SinhVien sv = new SinhVien(maSV);
         db.getmaNhom(sv);
-        int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn gửi không", "Confirm", JOptionPane.YES_NO_OPTION);
-        if (dialogBtn == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Nộp bài thành công");
-            insertBaiTap(linkBaiTap, noiDung, sv.getMaNhom());
-        }
+        insertBaiTap(linkBaiTap, ghiChu, sv.getMaNhom());
+        
     }
 
 }

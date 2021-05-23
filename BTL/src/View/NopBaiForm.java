@@ -1,6 +1,7 @@
 package View;
 
 import Control.NopBaiController;
+import javax.swing.JOptionPane;
 
 public class NopBaiForm extends javax.swing.JFrame {
 
@@ -142,8 +143,21 @@ public class NopBaiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void jButtonGuiBaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuiBaiActionPerformed
-      String maSV = ManHinhDangNhap.taikhoan.getUsername();
-      nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+    int dialogBtn = JOptionPane.showConfirmDialog(null, "Bạn có muốn gửi không", "Confirm", JOptionPane.YES_NO_OPTION);
+    if (dialogBtn == JOptionPane.YES_OPTION) {
+        if(jTextFieldPath.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Chua co link bai tap", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            String maSV = ManHinhDangNhap.taikhoan.getUsername();
+            nopBaiController.guiBaiAction(jTextFieldPath.getText(), jTextAreaNote.getText(), maSV);
+            JOptionPane.showMessageDialog(null, "Nộp bài thành công");
+        }
+    }
+    else {
+        jTextFieldPath.setText("");
+        jTextAreaNote.setText("");
+    }
   }//GEN-LAST:event_jButtonGuiBaiActionPerformed
 
   private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
