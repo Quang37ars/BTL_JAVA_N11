@@ -403,5 +403,39 @@ public class ConnectDB {
         }
         return kq;
     }
+    public void getDataBaiTap(ArrayList dsbt){
+        String sql = "SELECT * FROM BAITAP";
+        try{
+            getConnect();
+            stm = cnn.createStatement();
+            rs = stm.executeQuery(sql);
+            while(rs.next())
+            {
+                BaiTap baitap = new BaiTap(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+                dsbt.add(baitap);
+            }
+            closeConnect();
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
+        }
+        
+    }
+    public void selectThuBaiByTenLop(ArrayList<BaiTap> dsbt, String tenLop) {
+        String selectSQL = "select * from baitap\n"
+                + "where manhom in (select manhom from nhom \n"
+                + "where malop = (select malop from lophoc where tenlop = ?))";
+        getConnect();
+        try {
+            PreparedStatement preSta = cnn.prepareStatement(selectSQL);
+            preSta.setString(1, tenLop);
+            rs = preSta.executeQuery();
+            while (rs.next()) {
+                dsbt.add(new BaiTap(rs.getString(1), rs.getString(2), rs.getString(3),rs.getInt(4)));
+            }
+            closeConnect();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
+        }
+    }
     
 }

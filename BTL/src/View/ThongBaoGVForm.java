@@ -46,8 +46,10 @@ public class ThongBaoGVForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit-Document-icon.png"))); // NOI18N
         jLabel1.setText("Nhập thông báo: ");
 
+        jbtngui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/iconfinder_file-plus_2561435.png"))); // NOI18N
         jbtngui.setText("Gửi");
         jbtngui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +57,7 @@ public class ThongBaoGVForm extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Button-Close-icon.png"))); // NOI18N
         jButton3.setText("Thoát");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +68,7 @@ public class ThongBaoGVForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel2.setText("Thông báo");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/iconfinder_file-plus_2561435.png"))); // NOI18N
         jLabel3.setText("File đính kèm: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,7 +94,7 @@ public class ThongBaoGVForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(267, 267, 267)
                         .addComponent(jLabel2)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

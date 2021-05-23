@@ -5,36 +5,43 @@
  */
 package View;
 
+import Control.XuatfileThuBai;
 import Control.executeSQL;
 import java.util.ArrayList;
 import Model.BaiTap;
 import CustomTable.CustomTableBaiTap;
+import Model.Lop;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  *
  * @author phamt
  */
-public class BAITAPUI extends javax.swing.JFrame {
+public class BaitapUI extends javax.swing.JFrame {
 
     /**
      * Creates new form BAITAP
      */
-    ArrayList<BaiTap> listbt = new ArrayList<BaiTap>();
+    XuatfileThuBai xuatfile = new XuatfileThuBai();
+    HSSFWorkbook workbook = new HSSFWorkbook();
+    ArrayList<BaiTap> dsbt = new ArrayList<>();
+    ArrayList<Lop> dsLop = new ArrayList<>();
     executeSQL ex = new executeSQL();
 
-    public BAITAPUI() throws SQLException {
+    public BaitapUI() throws SQLException {
         initComponents();
         setLocationRelativeTo(null);
         ex.getBaiTap();
-        listbt = ex.getDsbt();
+        dsbt = ex.getDsbt();
         hienThiBang();
     }
 
     public void hienThiBang() {
-        jTable1.setModel(new CustomTableBaiTap(listbt));
+        jTable1.setModel(new CustomTableBaiTap(dsbt));
     }
 
     /**
@@ -81,6 +88,11 @@ public class BAITAPUI extends javax.swing.JFrame {
         });
 
         btnxuatfile.setText("Xuất file");
+        btnxuatfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxuatfileActionPerformed(evt);
+            }
+        });
 
         jComboBoxchonlop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -132,6 +144,17 @@ public class BAITAPUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnxuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuatfileActionPerformed
+        // TODO add your handling code here:
+        int dialogBtn = JOptionPane.showConfirmDialog(null, "Ban co muon xuat file khong?", "Alter", JOptionPane.YES_NO_OPTION);
+        if(dialogBtn == JOptionPane.YES_OPTION) {
+            for(int i =0; i < jComboBoxchonlop.getItemCount(); i++){
+                xuatfile.xuatFileAction(workbook, dsbt, jComboBoxchonlop.getSelectedItem().toString());
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_btnxuatfileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,14 +172,18 @@ public class BAITAPUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BAITAPUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BaitapUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BAITAPUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BaitapUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BAITAPUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BaitapUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BAITAPUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BaitapUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -166,9 +193,9 @@ public class BAITAPUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new BAITAPUI().setVisible(true);
+                    new BaitapUI().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(BAITAPUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(BaitapUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

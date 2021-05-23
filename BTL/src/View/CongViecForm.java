@@ -130,7 +130,7 @@ public class CongViecForm extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
-            new BAITAPUI().setVisible(true);
+            new BaitapUI().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(CongViecForm.class.getName()).log(Level.SEVERE, null, ex);
         }
