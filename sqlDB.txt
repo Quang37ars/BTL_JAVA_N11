@@ -1,0 +1,69 @@
+create table LOPHOC
+(
+	maLop varchar(20) primary key,
+	tenLop varchar(40),
+	siSo int,
+	tenHocPhan varchar(40),
+	khoa varchar(40)
+)
+
+create table SINHVIEN
+(
+        maSV varchar(20) primary key,
+        maNhom int,
+	hoSV varchar(40),
+	tenSV varchar(40),
+	nhomTruong boolean,
+        constraint FK_SV_NHOM foreign key(maNhom)
+		references NHOM(maNHOM)
+)
+
+create table DETAI
+(
+	maDeTai varchar(20) primary key,
+	tenDeTai varchar(40),
+	trangThaiChon varchar(20)
+)
+create table NHOM
+(
+	maNhom int primary key,
+	maLop varchar(20),
+	maDeTai varchar(20),
+	constraint FKN2 foreign key(maLop)
+		references LOPHOC(maLop),
+	constraint FKN3 foreign key(maDeTai)
+		references  DETAI(maDeTai)
+)
+create table DANHGIA
+(
+	maDanhGia varchar(20) primary key,
+	maNhom int,
+	diem float,
+	constraint FKDG foreign key(maNhom)
+		references NHOM(maNhom)
+)
+
+create table THONGBAO
+(
+	maThongBao varchar(20) primary key,
+	noiDung varchar(1000),
+	fileKem varchar(50)
+)
+
+create table TAIKHOAN
+(
+	taiKhoan varchar(20) primary key,
+	matKhau varchar(40),
+	quyen varchar(20)
+)
+create table BAITAP
+(
+	maBaiTap varchar(20) primary key,
+	ghiChu varchar(40),
+	linkBaiTap varchar(40),
+	maNhom int,
+	constraint FKBT1 foreign key(maNhom)
+		references NHOM(maNhom),
+	constraint FKBT2 foreign key(maSV)
+		references SINHVIEN(maSV)
+);
