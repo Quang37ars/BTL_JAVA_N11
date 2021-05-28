@@ -11,7 +11,7 @@ public class NopBaiController {
 
     private final ConnectDB db = new ConnectDB();
 
-    public void insertBaiTap(String linkBaiTap, String noiDung, int maNhom) {
+    public boolean insertBaiTap(String linkBaiTap, String noiDung, int maNhom) {
         ArrayList<BaiTap> m = new ArrayList<>();
         db.getMaBaiTap(m);
         String a = null;
@@ -32,7 +32,8 @@ public class NopBaiController {
                     break;
             }
         }
-        db.insertBaiTap(a, noiDung, linkBaiTap, maNhom);
+        if(db.insertBaiTap(a, noiDung, linkBaiTap, maNhom)) return true;
+        return false;
     }
 
     public int dem(int maBT) {
@@ -50,11 +51,11 @@ public class NopBaiController {
         jFrameNopBai.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public void guiBaiAction(String linkBaiTap, String ghiChu, String maSV) {
+    public boolean guiBaiAction(String linkBaiTap, String ghiChu, String maSV) {
         SinhVien sv = new SinhVien(maSV);
         db.getmaNhom(sv);
-        insertBaiTap(linkBaiTap, ghiChu, sv.getMaNhom());
-        
+        if(insertBaiTap(linkBaiTap, ghiChu, sv.getMaNhom())) return true;
+        return false;
     }
 
 }

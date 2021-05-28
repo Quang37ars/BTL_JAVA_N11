@@ -258,7 +258,7 @@ public class ConnectDB {
     }
 
     //Quân
-    public void insertBaiTap(String maBaiTap, String ghiChu, String linkBaiTap, int maNhom) {
+    public boolean insertBaiTap(String maBaiTap, String ghiChu, String linkBaiTap, int maNhom) {
         String insertSQL = "INSERT INTO BAITAP VALUES(?, ?, ?, ?)";
         try {
             getConnect();
@@ -267,11 +267,11 @@ public class ConnectDB {
             preSta.setString(2, ghiChu);
             preSta.setString(3, linkBaiTap);
             preSta.setInt(4, maNhom);
-            preSta.executeUpdate();
-            closeConnect();
+            return preSta.executeUpdate() > 0;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Loi chen du lieu\n" + ex);
+            JOptionPane.showMessageDialog(null, "Loi chen du lieu\n" + ex.getMessage());
         }
+        return false;
     }
 
     public void getMaBaiTap(ArrayList maBT) {
@@ -285,7 +285,7 @@ public class ConnectDB {
             }
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex.getMessage());
         }
 
     }
@@ -334,7 +334,7 @@ public class ConnectDB {
             }
             closeConnect();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu\n" + ex.getMessage());
         }
     }
 
@@ -350,7 +350,7 @@ public class ConnectDB {
             }
             closeConnect();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex);
+            JOptionPane.showMessageDialog(null, "Loi lay du lieu tu bang \n" + ex.getMessage());
         }
     }
 
