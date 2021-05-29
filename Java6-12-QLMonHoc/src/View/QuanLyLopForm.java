@@ -353,9 +353,9 @@ public class QuanLyLopForm extends javax.swing.JFrame {
                 .addComponent(btnSua)
                 .addGap(32, 32, 32)
                 .addComponent(btnXoa)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(btnSapXepSTT)
-                .addGap(38, 38, 38)
+                .addGap(48, 48, 48)
                 .addComponent(btnSapXepTen)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
