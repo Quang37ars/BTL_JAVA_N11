@@ -353,9 +353,9 @@ public class QuanLyLopForm extends javax.swing.JFrame {
                 .addComponent(btnSua)
                 .addGap(32, 32, 32)
                 .addComponent(btnXoa)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(btnSapXepSTT)
-                .addGap(48, 48, 48)
+                .addGap(35, 35, 35)
                 .addComponent(btnSapXepTen)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -528,7 +528,7 @@ public class QuanLyLopForm extends javax.swing.JFrame {
                 try {
                     exsql.deleteSV(e.getMaSV());
                 } catch (Exception ex) {
-                    Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Lỗi xóa sinh viên \n");
                 }
                 dssv.remove(tableSinhVien.getSelectedRow());
                 tableSinhVien.setModel(new CustomTableSinhVien(dssv));
@@ -545,10 +545,13 @@ public class QuanLyLopForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tableLop.getSelectedRow() >= 0) {
             Lop l = dslop.get(tableLop.getSelectedRow());
+            int k = JOptionPane.showConfirmDialog(null, "Bạn có thực sự muốn xóa sinh viên này không !!!", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION){
             try {
                 exsql.deleteLop(l.getMaLop());
             } catch (Exception ex) {
-                Logger.getLogger(QuanLyLopForm.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Lỗi xóa lớp \n");
+            }
             }
             dslop.remove(tableLop.getSelectedRow());
             tableLop.setModel(new CustomTableLop(dslop));
